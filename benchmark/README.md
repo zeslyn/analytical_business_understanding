@@ -1,52 +1,65 @@
 # Benchmark
 
 **Classification:** Research / Engineering  
-**Status:** Foundation  
+**Status:** Draft Preregistration
+
+**Last updated:** 2026-07-20
+
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
 本目录用于验证增加 `BUSINESS.md` 是否改善 AI 的分析表现。
 
-## 实验条件
+## 当前实验主张
 
-**Baseline**
+第一轮正式实验只回答：
 
-```text
-SEMANTIC.md + INCIDENT.md
-```
+> 显式 ABU 是否在相同模型、Incident、Semantic Layer 和证据预算下，改善根因覆盖、假设质量和证据效率？
 
-**ABU Condition**
+Transition 的独立价值、Hybrid View 和错误 ABU 恢复能力属于次级或探索性问题，不能替代主要 ABU 对照。
 
-```text
-BUSINESS.md + SEMANTIC.md + INCIDENT.md
-```
+## 核心实验条件
+
+| 条件 | 输入 | 解释目的 |
+|---|---|---|
+| A — Baseline | `SEMANTIC.md + INCIDENT.md` | 只有数据语义和事件证据 |
+| B — Equal-length Domain Notes | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | 控制更多文本和一般领域知识 |
+| C — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | 测量显式 ABU 的增量价值 |
 
 ## 候选控制条件
 
-[RN-0002](../research/RN-0002-properties-of-abu.md) 提出两类尚未预注册的候选条件：
+[RN-0002](../research/RN-0002-properties-of-abu.md) 提出：
 
-- **Equal-length Domain Notes**：控制更多业务文本和上下文长度带来的效果；
 - **Perturbed ABU**：用缺失、错误领域或过期知识探索错误先验和恢复能力。
 
-[RN-0003](../research/RN-0003-why-transition.md) 进一步提出表示结构候选条件：
+[RN-0003](../research/RN-0003-why-transition.md) 提出：
 
 - **Transition Skeleton**：只包含 Actor、State 和 Transition 索引；
 - **Mechanism-augmented Transition**：增加机制、约束和区分性 Evidence；
 - **Hybrid View**：以 Transition 为索引，并引用最适合的 Process、Journey、Causal Model 或 Stock–Flow 视图。
 
-这些条件只有在 `protocol.md` 完成评审后才能进入正式 Benchmark；探索性运行不得与验证性结果混合，也不能假设所有候选条件都必须进入第一轮正式实验。
+这些探索条件只有在 [protocol.md](./protocol.md) 冻结案例子集、输入差异和评价指标后才能运行。探索性结果不得与验证性结果混合。
+
+## 分阶段执行
+
+1. **G0 — Rubric calibration：** 用非 Benchmark 样例校准评分量表；
+2. **G1 — Game pilot：** 3 个游戏 Incident，A/B/C 每条件暂定 5 次，仅用于可运行性和方差估计；
+3. **F1 — Cross-industry confirmation：** 暂定 5 行业 × 3 个未见 Incident，样本量在功效分析后冻结；
+4. **E1 — Representation and safety：** 在预先指定子集上探索 Transition、Hybrid View 和 Perturbed ABU。
+
+G1 的案例和输出不得进入 F1 的验证性效应估计。
 
 ## 目录内容
 
 - [protocol.md](./protocol.md)：实验设计、控制变量、随机化和重复运行；
 - [scoring-rubric.md](./scoring-rubric.md)：评价维度和评分锚点；
+- [judging-form.md](./judging-form.md)：独立评分与裁决所需记录字段；
 - [results](./results/)：冻结协议后的运行记录和结果。
 
-## 研究原则
+## 当前冻结状态
 
-- 协议和评分量表必须在正式运行前预注册；
-- 两个条件使用相同模型、分析 Prompt 和 Incident；
-- 记录模型版本、配置、时间和所有输出；
-- 使用多次运行评估生成随机性；
-- 评分时隐藏实验条件并随机化答案顺序；
-- 报告正向结果、无效结果和负向结果；
-- 模拟案例结论不得直接外推为真实企业有效性。
+- Protocol：v0.1，Draft Preregistration — Not Frozen；
+- Scoring Rubric：v0.1，Draft Preregistration — Not Calibrated；
+- Judging Form：v0.1，Draft；
+- Decision：见 [DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md)，当前为 Proposed。
+
+在模型版本、Prompt、MID、护栏界值、功效分析、评分一致性和角色隔离完成前，不得开始 F1。

@@ -80,6 +80,7 @@ Project Charter v0.1 作为历史来源保持不变。
 ## Follow-up
 
 - [x] 完成 RN-0001 至 RN-0004 的第一轮 Draft，形成理论最小闭环；
-- [ ] 填充 Benchmark protocol 和 scoring rubric；
+- [x] 完成 Benchmark protocol、scoring rubric 和 judging form 的第一轮预注册草案；
+- [ ] 校准并冻结 Benchmark protocol 和 scoring rubric；
 - [ ] 创建 RFC-0000；
 - [ ] 在游戏案例启动前评审 OQ-0006 和 OQ-0007。

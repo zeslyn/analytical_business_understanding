@@ -3,15 +3,20 @@
 **Status:** Empty  
 **Related Glossary:** [GLOSSARY.md](../../GLOSSARY.md)
 
-只有在实验协议和评分量表完成预注册后，结果才能写入本目录。
+只有在 [实验协议](../protocol.md) 和 [评分量表](../scoring-rubric.md) 完成对应阶段的冻结后，结果才能写入本目录。G0、G1、F1 和 E1 必须使用不同的 Study ID 和目录，不得合并。
 
-每次运行应保留：
+建议结构：
 
-- Case 和 Incident 标识；
-- 实验条件的匿名标识；
-- 模型与配置；
-- 原始输入和原始输出；
-- 运行时间与随机种子（如可用）；
-- 独立评分；
-- 评分分歧和最终处理；
-- 协议偏离。
+```text
+<study-id>/
+├── preregistration/   # 冻结协议、量表、Decision Record 和哈希
+├── manifests/         # Case、运行、随机化和匿名映射清单
+├── inputs/            # 条件输入；隐藏答案与评分可见内容分权存放
+├── raw-outputs/       # 完整原始输出
+├── blinded-outputs/   # 评分用匿名输出
+├── scores/            # 两名评分者原始表、裁决和一致性
+├── analysis/          # 冻结脚本、模拟测试和最终输出
+└── deviations.md      # 技术失败、补跑、偏离和处理
+```
+
+每次运行的必填字段和失败运行规则以 `protocol.md` 第 14、17 节为准。
