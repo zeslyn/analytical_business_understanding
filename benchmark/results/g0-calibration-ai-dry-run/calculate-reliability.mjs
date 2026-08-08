@@ -89,7 +89,7 @@ for (const [name, column] of dimensions) {
   const overOne = scores1.filter((value, i) => Math.abs(value - scores2[i]) > 1).length;
   const levels = [...new Set([...scores1, ...scores2])].sort((a, b) => a - b);
   const alpha = ordinalAlpha([scores1, scores2]);
-  const gate = alpha >= 0.8 && levels.length >= 3 ? "AI dry-run target met" : alpha >= 0.667 ? "Tentative" : "Stop";
+  const gate = alpha >= 0.8 && levels.length >= 3 ? "Numeric target met" : alpha >= 0.667 ? "Tentative" : "Stop";
   console.log(`| ${name} | 12 | ${levels.join(", ")} | ${alpha.toFixed(3)} | ${exact}/12 (${(exact / 12 * 100).toFixed(1)}%) | ${withinOne}/12 (${(withinOne / 12 * 100).toFixed(1)}%) | ${overOne} | ${gate} |`);
 }
 

@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering
 
-**Status:** Initial Set — Not Scored
+**Status:** Initial Set — Provisional Independent-AI Scoring Complete
 
 **Version:** 0.1
 
@@ -68,8 +68,10 @@
 - [x] 强、边界、错误、截断/低信息、错误先验和合理替代解释覆盖；
 - [x] Answer Key 与裁决提示；
 - [x] 可复现的盲评顺序与校准记录模板；
-- [ ] 两名评分者独立评分；
-- [ ] 一致性统计；
+- [x] 两名独立 AI 评分者完成首轮评分；
+- [x] 首轮一致性统计完成，所有主要子维度数值上达到 `α ≥ 0.80`；
+- [ ] 补齐可复现的 Judge 精确版本、Prompt hash 和 Session / Run ID；
+- [ ] 完成 G0-A009 等必要独立裁决；
 - [ ] 分歧讨论与 Rubric 修订记录；
 - [ ] 未讨论 Holdout Set；
 - [ ] 主要子维度达到 G1 所需一致性门槛。

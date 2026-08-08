@@ -27,12 +27,12 @@
 
 ## 2. Role Separation
 
-| Role | Anonymous ID | Access before reveal | Conflict or limitation |
-|---|---|---|---|
-| Run operator |  |  |  |
-| Judge 1 |  | Case, Answer, Rubric only |  |
-| Judge 2 |  | Case, Answer, Rubric only |  |
-| Adjudicator |  | Case, Answer, Rubric; no condition code |  |
+| Role | Type | Anonymous / Session ID | Runtime / config hash | Access before reveal | Conflict or limitation |
+|---|---|---|---|---|---|
+| Run operator | Human / AI |  |  |  |  |
+| Judge 1 | Human / AI |  |  | Case, Answer, Rubric only |  |
+| Judge 2 | Human / AI |  |  | Case, Answer, Rubric only |  |
+| Adjudicator | Human / AI |  |  | Case, Answer, Rubric; no condition code |  |
 
 ## 3. Raw Score Artifacts
 

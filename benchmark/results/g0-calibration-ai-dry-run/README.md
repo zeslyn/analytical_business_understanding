@@ -1,10 +1,10 @@
 # G0 Calibration AI Dry Run
 
-**Status:** Completed — AI-only Dry Run
+**Status:** Completed — Provisional Independent-Judge Run
 
-**Classification:** Secondary / Process Rehearsal
+**Classification:** Calibration Evidence / Provisional
 
-> 本目录记录两个独立 AI Agent 对 G0 材料的盲评演练。它只能用于检查量表可执行性、评分记录格式和潜在分歧，不能替代协议要求的人类评分者，也不能单独满足 G1 reliability gate。
+> 本目录记录两个独立 AI Agent 对 G0 材料的盲评。协议 v0.2 允许独立 AI Agent 作为早期评分者；但本次运行没有完整记录精确 Judge 模型版本、Prompt hash 和 Session / Run ID，且必要裁决尚未完成，因此仍不能单独满足 G1 reliability gate。
 
 ## Blinding Rules
 

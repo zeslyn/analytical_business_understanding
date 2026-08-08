@@ -4,7 +4,7 @@
 
 **Status:** Draft Preregistration — Not Calibrated
 
-**Version:** 0.1
+**Version:** 0.2
 
 **Last updated:** 2026-08-08
 
@@ -45,6 +45,9 @@
 | Answer ID | 匿名标识 |
 | Incident ID / version | 评分材料版本 |
 | Judge ID | 评分者匿名标识 |
+| Judge type | Human / AI Agent |
+| Judge runtime | AI 的 provider、精确模型版本和 Session / Run ID；人类填 N/A |
+| Judge prompt / config hash | AI 必填；人类填评分说明版本 |
 | Required sections present | Yes / No |
 | Hypotheses counted | 0–5；超出部分记录但不评分 |
 | Checks counted | 0–5；超出部分记录但不评分 |
@@ -274,17 +277,20 @@ invalid_check_ratio = invalid checks / scored checks
 
 裁决记录必须包含原始分数、争议点、引用文本、裁决值和理由。裁决者看不到条件代码。
 
-## 13. LLM Judge Sensitivity Analysis
+## 13. AI Judge Controls
 
-LLM 评分不得替代主要人类评分。如果使用：
+AI Agent 可以作为独立主要评分者或次级敏感性评分者。作为主要评分者时必须：
 
-- 固定 Judge 模型、Prompt、温度和版本；
+- 使用独立无状态会话，且不继承其他评分者或被测运行的记忆、缓存和中间结果；
+- 固定并记录 Judge provider、精确模型版本、Prompt、温度、上下文顺序、工具权限和配置哈希；
+- 在提交前无法访问 Answer Key、条件代码、另一评分者记录和一致性统计；
 - 单项评分使用本量表和相同 Business Reality；
-- Pairwise 比较对每一对答案做 A/B 与 B/A 两次位置交换；
-- 报告自洽率、位置翻转率以及与人类评分的相关性和系统偏差；
-- 在结果中明确标记为 Secondary。
+- 若采用 Pairwise 比较，对每一对答案做 A/B 与 B/A 两次位置交换；
+- 报告自洽率、位置翻转率、评分分布和不同 Judge 运行之间的系统偏差；
+- 披露与案例作者、答案生成模型和其他 Judge 的同源关系；
+- 多个同基础模型的隔离 Agent 只证明运行独立，不证明模型多样性。
 
-该限制源于已有研究发现 LLM 评委存在位置、熟悉度、锚定和评分分布偏差；见 [MT-Bench / Chatbot Arena](https://arxiv.org/abs/2306.05685)、[Large Language Models are not Fair Evaluators](https://arxiv.org/abs/2305.17926) 和 [Large Language Models are Inconsistent and Biased Evaluators](https://arxiv.org/abs/2405.01724)。
+这些控制源于已有研究发现 LLM 评委存在位置、熟悉度、锚定和评分分布偏差；见 [MT-Bench / Chatbot Arena](https://arxiv.org/abs/2306.05685)、[Large Language Models are not Fair Evaluators](https://arxiv.org/abs/2305.17926) 和 [Large Language Models are Inconsistent and Biased Evaluators](https://arxiv.org/abs/2405.01724)。
 
 ## 14. Version and Approval
 
@@ -296,7 +302,7 @@ LLM 评分不得替代主要人类评分。如果使用：
 - [x] 规定无效检查计数；
 - [x] 规定分歧与裁决流程；
 - [x] 创建至少 12 个、目标 20 个校准回答：见 [calibration](./calibration/)；
-- [ ] 完成第一轮评分者校准。
+- [x] 完成第一轮独立 AI 评分者运行；运行元数据补齐、裁决和门禁资格仍待完成。
 
 ### Required before formal use
 

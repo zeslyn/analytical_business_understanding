@@ -58,10 +58,10 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 
 ## 当前冻结状态
 
-- Protocol：v0.1，Draft Preregistration — Not Frozen；
-- Scoring Rubric：v0.1，Draft Preregistration — Not Calibrated；
-- Judging Form：v0.1，Draft；
-- G0 Calibration Set：v0.1，材料已创建，尚未完成双评委评分；
+- Protocol：v0.2，Draft Preregistration — Not Frozen；
+- Scoring Rubric：v0.2，Draft Preregistration — Not Calibrated；
+- Judging Form：v0.2，Draft；
+- G0 Calibration Set：v0.1，材料及首轮独立 AI 评分已完成，运行元数据与裁决尚未完成；
 - Decision：见 [DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md)，当前为 Proposed。
 
 在模型版本、Prompt、MID、护栏界值、功效分析、评分一致性和角色隔离完成前，不得开始 F1。

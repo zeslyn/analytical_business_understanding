@@ -34,3 +34,7 @@
 - Independent scoring start:
 - Independent scoring complete:
 - Answer Key revealed:
+
+## Recorded Runs
+
+- [G0 independent AI Judge run](../results/g0-calibration-ai-dry-run/)：首轮数值一致性已完成；Judge 运行元数据与必要裁决未完成，不具备 G1 gate 资格。

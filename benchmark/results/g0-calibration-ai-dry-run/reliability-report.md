@@ -1,12 +1,12 @@
 # G0 Calibration AI Dry-run Reliability Report
 
-**Status:** Complete — Secondary Process Rehearsal
+**Status:** Complete — Provisional Independent-Judge Run
 
 **Date:** 2026-08-08
 
 **Judges:** Two independent blank-context AI Agents
 
-> 本报告不满足 `benchmark/protocol.md` 要求的人类评分者门禁。结果只能用于检查量表可执行性、记录格式和需要人工讨论的锚点，不能解锁 G1。
+> Protocol v0.2 不再要求评分者必须是人类。本次结果在数值上达到一致性目标，但由于精确 Judge 运行元数据未完整记录，且必要裁决尚未完成，仍不能解锁 G1。
 
 ## 1. Preserved Inputs
 
@@ -16,6 +16,8 @@
 | [judge-2.md](./judge-2.md) | 12/12 | `78051bad3b0a283bed5fdd634bca7a6661f71305f4f0717a76fce61105d052e4` |
 
 两份文件均在比较前完成并封存。统计过程未读取或使用 `benchmark/calibration/answer-key.md`，也未修改任何原始分数。
+
+本次运行发生在 Protocol、Rubric 和 Judging Form 升级到 v0.2 之前，实际使用的是 v0.1 评分材料。两个 Judge 的空白会话和文件隔离已有记录，但精确模型 build、Judge prompt hash 和 Session / Run ID 未在启动时封存；该缺口不能事后推断补写。
 
 ## 2. Method
 
@@ -49,20 +51,20 @@
 - Business and Evidence Integrity：G0-A007，2 vs 1；G0-A005，2 vs 1；G0-A012，3 vs 4；
 - Open-world Resilience：G0-A008，1 vs 0；G0-A012，1 vs 2。
 
-所有差异均不超过 1 分。Mechanistic Specificity、Testability、First Discriminating Evidence 和 BEI 的完全一致率最低，均为 75%；这些维度应作为人类校准讨论的优先观察点。
+所有差异均不超过 1 分。Mechanistic Specificity、Testability、First Discriminating Evidence 和 BEI 的完全一致率最低，均为 75%；这些维度应作为后续评分者校准讨论的优先观察点。
 
 ## 5. Procedural Findings
 
 1. 两个空白上下文 Agent 都能按 Judging Form 完成全部字段，说明当前材料和量表在流程上可执行；
 2. 每个主要子维度都覆盖至少 3 个分值，未出现无法解释 alpha 的退化分布；
-3. 所有 AI dry-run 维度达到 `α ≥ 0.80`，但这只代表本次 AI 评分演练；
+3. 所有独立 AI Judge 维度达到 `α ≥ 0.80`，数值一致性门槛已满足；
 4. 两名 Judge 都把 G0-A009 标记为 `candidate-valid-alternative`，因此正式流程仍需独立裁决者；
 5. Answer Key 尚未用于本报告；任何锚点讨论应与原始评分和本统计报告分开记录。
 
 ## 6. Decision
 
-**AI dry-run:** Complete; process is ready for human calibration.
+**Independent AI Judge run:** Numeric reliability target met.
 
-**Human G0 gate:** Not evaluated and remains closed.
+**G0 gate:** Remains closed because Judge runtime metadata and required adjudication are incomplete.
 
-下一步应由两名人类评分者在相同盲法下完成独立评分，并由不知道条件代码的第三方处理 G0-A009 和其他必要裁决。
+下一步应补齐可复现的 Judge 运行元数据，并由不知道条件代码和 Answer Key 的独立第三方评分者处理 G0-A009 和其他必要裁决。评分者可以是满足协议隔离要求的人类或 AI Agent。
