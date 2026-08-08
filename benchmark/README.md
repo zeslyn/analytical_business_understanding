@@ -3,7 +3,7 @@
 **Classification:** Research / Engineering  
 **Status:** Draft Preregistration
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-08-08
 
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
@@ -53,13 +53,15 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 - [protocol.md](./protocol.md)：实验设计、控制变量、随机化和重复运行；
 - [scoring-rubric.md](./scoring-rubric.md)：评价维度和评分锚点；
 - [judging-form.md](./judging-form.md)：独立评分与裁决所需记录字段；
+- [calibration](./calibration/)：G0 的 4 个非 Benchmark 案例、12 个匿名回答、盲评顺序和校准记录；
 - [results](./results/)：冻结协议后的运行记录和结果。
 
 ## 当前冻结状态
 
-- Protocol：v0.1，Draft Preregistration — Not Frozen；
-- Scoring Rubric：v0.1，Draft Preregistration — Not Calibrated；
-- Judging Form：v0.1，Draft；
+- Protocol：v0.2，Draft Preregistration — Not Frozen；
+- Scoring Rubric：v0.2，Draft Preregistration — Not Calibrated；
+- Judging Form：v0.2，Draft；
+- G0 Calibration Set：v0.1，材料及首轮独立 AI 评分已完成，运行元数据与裁决尚未完成；
 - Decision：见 [DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md)，当前为 Proposed。
 
 在模型版本、Prompt、MID、护栏界值、功效分析、评分一致性和角色隔离完成前，不得开始 F1。

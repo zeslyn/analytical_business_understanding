@@ -4,7 +4,7 @@
 
 **Status:** Draft — Not Calibrated
 
-**Version:** 0.1
+**Version:** 0.2
 
 **Related Protocol:** [protocol.md](./protocol.md)
 
@@ -22,6 +22,13 @@
 | Incident ID / version | |
 | Answer ID | |
 | Judge ID | |
+| Judge type（Human / AI Agent） | |
+| Judge provider / exact model version（AI） | |
+| Session / Run ID | |
+| Judge system / prompt hash（AI） | |
+| Sampling parameters / context order（AI） | |
+| Tool access | |
+| Known model or author co-origin risk | |
 | Rubric version / hash | |
 | Started at | |
 | Submitted at | |
@@ -110,7 +117,7 @@
 
 **Anything that should be decided by the adjudicator：**
 
-I confirm that I completed this form independently and did not access the condition code.
+I confirm that I completed this form in an independent session and did not access the condition code, Answer Key, another Judge record, or interim reliability statistics.
 
 - Judge:
 - Date:
