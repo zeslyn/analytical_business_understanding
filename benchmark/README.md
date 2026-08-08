@@ -54,6 +54,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 - [scoring-rubric.md](./scoring-rubric.md)：评价维度和评分锚点；
 - [judging-form.md](./judging-form.md)：独立评分与裁决所需记录字段；
 - [calibration](./calibration/)：G0 的 4 个非 Benchmark 案例、12 个匿名回答、盲评顺序和校准记录；
+- [g1](./g1/)：游戏 Pilot 的输入、运行锁、随机化、审计和偏离模板；
 - [results](./results/)：冻结协议后的运行记录和结果。
 
 ## 当前冻结状态
@@ -62,6 +63,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 - Scoring Rubric：v0.2，已为 G1 Pilot 完成校准，尚未 Frozen；
 - Judging Form：v0.2，Draft；
 - G0 Calibration Set：v0.1，G1 Pilot 量表门禁已完成；仅适用于探索性 G1，不适用于 F1；
-- Decision：见 [DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md)，当前为 Proposed。
+- G1 Game Pilot：`G1-GAME-PILOT-V0.1` 正在组装 lock package，尚未生成分析输出；
+- Decisions：[DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md) 与 [DR-0003](../docs/decisions/DR-0003-g1-game-pilot-launch.md) 当前均为 Proposed。
 
 在模型版本、Prompt、MID、护栏界值、功效分析、评分一致性和角色隔离完成前，不得开始 F1。
