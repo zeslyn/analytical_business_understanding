@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering — Preregistration
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Locked and Running — 6 / 45 Outputs
+**Status:** Locked and Running — 18 / 45 Outputs
 **Date:** 2026-08-08
 
 ## Gate
