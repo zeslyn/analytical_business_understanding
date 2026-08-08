@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering
 
-**Status:** Draft Preregistration — Not Calibrated
+**Status:** Draft Preregistration — Calibrated for G1 Pilot, Not Frozen
 
 **Version:** 0.2
 
@@ -14,7 +14,7 @@
 
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
-> 本量表尚未完成评分者校准。校准材料、一致性门槛和正式版本未冻结前，不得用于产生验证性结论。
+> 本量表已完成支持探索性 G1 Pilot 的首次独立评分者校准，但尚未冻结，也未满足 F1 验证性使用所需的全部协议门槛。
 
 ## 1. Scoring Principles
 

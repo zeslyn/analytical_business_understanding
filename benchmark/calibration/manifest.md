@@ -37,4 +37,4 @@
 
 ## Recorded Runs
 
-- [G0 independent AI Judge run](../results/g0-calibration-ai-dry-run/)：首轮数值一致性已完成；Judge 运行元数据与必要裁决未完成，不具备 G1 gate 资格。
+- [G0 independent AI Judge run](../results/g0-calibration-ai-dry-run/)：数值一致性、运行侧写、G0-A009 裁决和锚点讨论已完成；带已披露的 G0-only runtime deviation，可用于解锁 G1 Pilot 的量表门禁，不适用于 F1。
