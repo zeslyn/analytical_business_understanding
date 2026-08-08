@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering — Preregistration
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Ready for Lock Commit — No Outputs Generated
+**Status:** Locked for Independent Execution — 0 / 45 Outputs
 **Date:** 2026-08-08
 
 ## Gate
@@ -14,7 +14,7 @@
 - [x] shared instructions, Prompt, response budget, run count, and context order included in the seal manifest;
 - [x] deterministic run order, Answer IDs, and independent Judge orders included in the seal manifest;
 - [x] all study inputs have SHA-256 records;
-- [ ] lock Git commit recorded;
+- [x] lock Git commit recorded;
 - [x] study is explicitly exploratory and excluded from F1.
 
 ## Seal
@@ -23,10 +23,11 @@
 - Rubric version: `0.2 — Calibrated for G1 Pilot, Not Frozen`
 - Decision Record: [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
 - Input manifest: [input-hashes.sha256](../results/g1-game-pilot-v0.1/manifests/input-hashes.sha256)
-- Lock commit:
-- Approved by:
-- Approval timestamp:
+- Input manifest SHA-256: `d24a35eb5bcd79946df4750491ed5ff4763a006daac976378c7ffd29b1df941f`
+- Lock commit: `62f691bc478f6c5c8fcee045c842cd6b2bff802a`
+- Approved by: Project maintainer via the 2026-08-08 instruction to start G1
+- Approval timestamp: `2026-08-08 17:11:06 CST`
 
 ## Execution decision
 
-**Do not generate G1 analysis outputs until the lock commit is recorded and independent blank-context run sessions are authorized.**
+**G1 is locked for execution. Analysis outputs must be generated only in independent blank-context sessions that receive the assigned packet and no restricted material.**
