@@ -444,9 +444,9 @@ benchmark/results/<study-id>/
 
 - [x] G0 [评分材料](./calibration/)和 [judging-form.md](./judging-form.md) 完成；
 - [x] 主要评分维度完成独立校准并达到一致性门槛；
-- [ ] 3 个游戏 Incident 和 Business Reality 完成并封存；
-- [ ] A、B、C 条件通过 Token、泄漏和可读性审计；
-- [ ] 模型、Prompt、输出预算、运行次数和随机化表冻结；
+- [x] 3 个游戏 Incident 和 Business Reality 完成并进入 [G1 seal manifest](./results/g1-game-pilot-v0.1/manifests/input-hashes.sha256)；
+- [x] A、B、C 条件通过 G1 长度代理、托管输出 Token 估算、泄漏和可读性审计；若运行时暴露模型原生 Token，首批运行仍需复核；
+- [x] 模型可得标识、Prompt、输出预算、运行次数和随机化表已在 [G1 runtime lock](./g1/runtime-lock.md) 与 [pilot lock](./g1/pilot-lock.md) 冻结；
 - [x] G1 明确标记为探索性，不与 F1 合并：见 [G1 package](./g1/)。
 
 ### 18.2 F1 preregistration lock

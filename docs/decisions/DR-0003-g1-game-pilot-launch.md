@@ -1,6 +1,6 @@
 # DR-0003 — G1 Game Pilot Launch Design
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-08
 **Classification:** Research / Engineering
 **Owners:** Project maintainer
@@ -77,9 +77,9 @@ DR-0001 同时要求在游戏试验前建立 RFC 草案，又要求 RFC 根据�
 
 ## Follow-up
 
-- [ ] 维护者接受本记录；
-- [ ] 完成输入审计与 lock manifest；
+- [x] 维护者通过 2026-08-08 的“启动 G1”指令接受本记录；
+- [x] 完成输入审计与 lock manifest；
 - [ ] 生成 45 个独立分析输出；
 - [ ] 完成双重盲评、可靠性与必要裁决；
 - [ ] 用 G1 方差和缺陷修订 F1 preregistration；
-- [ ] 修订 RN-0002 的条件字母命名冲突。
+- [x] 修订 RN-0002 的条件字母命名冲突。

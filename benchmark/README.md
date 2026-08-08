@@ -63,7 +63,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 - Scoring Rubric：v0.2，已为 G1 Pilot 完成校准，尚未 Frozen；
 - Judging Form：v0.2，Draft；
 - G0 Calibration Set：v0.1，G1 Pilot 量表门禁已完成；仅适用于探索性 G1，不适用于 F1；
-- G1 Game Pilot：`G1-GAME-PILOT-V0.1` 正在组装 lock package，尚未生成分析输出；
-- Decisions：[DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md) 与 [DR-0003](../docs/decisions/DR-0003-g1-game-pilot-launch.md) 当前均为 Proposed。
+- G1 Game Pilot：`G1-GAME-PILOT-V0.1` 输入与运行设计已锁定，当前 0 / 45 个分析输出；
+- Decisions：[DR-0002](../docs/decisions/DR-0002-benchmark-preregistration-design.md) 为 Proposed；[DR-0003](../docs/decisions/DR-0003-g1-game-pilot-launch.md) 为 Accepted。
 
 在模型版本、Prompt、MID、护栏界值、功效分析、评分一致性和角色隔离完成前，不得开始 F1。

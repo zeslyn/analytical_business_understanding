@@ -1,7 +1,7 @@
 # Game Reference Case — Skybound Guilds
 
 **Classification:** Research / Engineering
-**Status:** G1 Pilot Authoring — Inputs Not Yet Locked
+**Status:** G1 Pilot Inputs Locked — Runs Not Started
 **Version:** 0.1
 **Last updated:** 2026-08-08
 **Related Glossary:** [GLOSSARY.md](../../GLOSSARY.md)
