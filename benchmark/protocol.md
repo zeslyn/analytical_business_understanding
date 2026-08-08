@@ -6,7 +6,7 @@
 
 **Version:** 0.1
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-08-08
 
 **Related Open Questions:** OQ-0006, OQ-0007, OQ-0009, OQ-0010, OQ-0013, OQ-0015, OQ-0019, OQ-0020, OQ-0021, OQ-0026, OQ-0027, OQ-0028, OQ-0029, OQ-0030
 
@@ -427,7 +427,7 @@ benchmark/results/<study-id>/
 
 ### 18.1 G1 pilot lock
 
-- [ ] G0 评分材料和 [judging-form.md](./judging-form.md) 完成；
+- [x] G0 [评分材料](./calibration/)和 [judging-form.md](./judging-form.md) 完成；
 - [ ] 主要评分维度校准达到一致性门槛；
 - [ ] 3 个游戏 Incident 和 Business Reality 完成并封存；
 - [ ] A、B、C 条件通过 Token、泄漏和可读性审计；

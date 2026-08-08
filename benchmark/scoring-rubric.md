@@ -6,7 +6,7 @@
 
 **Version:** 0.1
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-08-08
 
 **Related Protocol:** [protocol.md](./protocol.md)
 
@@ -295,7 +295,7 @@ LLM 评分不得替代主要人类评分。如果使用：
 - [x] 提供正例、边界例和反例；
 - [x] 规定无效检查计数；
 - [x] 规定分歧与裁决流程；
-- [ ] 创建至少 12 个、目标 20 个校准回答；
+- [x] 创建至少 12 个、目标 20 个校准回答：见 [calibration](./calibration/)；
 - [ ] 完成第一轮评分者校准。
 
 ### Required before formal use
