@@ -23,8 +23,8 @@
 - Rubric version: `0.2 — Calibrated for G1 Pilot, Not Frozen`
 - Decision Record: [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
 - Input manifest: [input-hashes.sha256](../results/g1-game-pilot-v0.1/manifests/input-hashes.sha256)
-- Input manifest SHA-256: `d24a35eb5bcd79946df4750491ed5ff4763a006daac976378c7ffd29b1df941f`
-- Lock commit: `62f691bc478f6c5c8fcee045c842cd6b2bff802a`
+- Input manifest SHA-256: `0333e355c0005e157904246af32e5edada5ff3ddb4ef45fcb1c9cc53350b03d8`
+- Lock commit: `c5502eadd0970ef4902244bf685b0cb2c15724df`
 - Approved by: Project maintainer via the 2026-08-08 instruction to start G1
 - Approval timestamp: `2026-08-08 17:11:06 CST`
 
