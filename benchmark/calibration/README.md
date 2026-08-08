@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering
 
-**Status:** Initial Set — Provisional Independent-AI Scoring Complete
+**Status:** G0 Complete for G1 Pilot — Not for F1
 
 **Version:** 0.1
 
@@ -70,11 +70,11 @@
 - [x] 可复现的盲评顺序与校准记录模板；
 - [x] 两名独立 AI 评分者完成首轮评分；
 - [x] 首轮一致性统计完成，所有主要子维度数值上达到 `α ≥ 0.80`；
-- [ ] 补齐可复现的 Judge 精确版本、Prompt hash 和 Session / Run ID；
-- [ ] 完成 G0-A009 等必要独立裁决；
-- [ ] 分歧讨论与 Rubric 修订记录；
-- [ ] 未讨论 Holdout Set；
-- [ ] 主要子维度达到 G1 所需一致性门槛。
+- [x] 可得 Judge 运行元数据已补录；未暴露字段和 G0-only 偏离已封存；
+- [x] G0-A009 必要独立裁决完成；
+- [x] 分歧与 Answer Key 锚点讨论完成；Rubric 无需修改；
+- [x] Rubric 未修改，因此本轮不触发未讨论 Holdout Set；
+- [x] 主要子维度达到 G1 所需一致性门槛。
 
 ## Restrictions
 

@@ -4,7 +4,7 @@
 
 **Classification:** Calibration Evidence / Provisional
 
-> 本目录记录两个独立 AI Agent 对 G0 材料的盲评。协议 v0.2 允许独立 AI Agent 作为早期评分者；但本次运行没有完整记录精确 Judge 模型版本、Prompt hash 和 Session / Run ID，且必要裁决尚未完成，因此仍不能单独满足 G1 reliability gate。
+> 本目录记录两个独立 AI Agent 对 G0 材料的盲评。协议 v0.2 允许独立 AI Agent 作为早期评分者。本次未暴露的精确运行字段已作为 G0-only 偏离封存，必要裁决和锚点讨论均已完成；结果可支持 G1 Pilot 的量表门禁，不适用于 F1。
 
 ## Blinding Rules
 
@@ -20,7 +20,12 @@
 - `judge-1.md`：Judge 1 原始评分；
 - `judge-2.md`：Judge 2 原始评分；
 - `calculate-reliability.mjs`：从两份汇总表复算一致性的脚本；
-- `reliability-report.md`：一致性与流程演练报告。
+- `compare-reference.mjs`：揭示后比较 Judge 与 provisional reference 的脚本；
+- `reliability-report.md`：一致性与流程演练报告；
+- `judge-1-runtime.md`、`judge-2-runtime.md`：可得运行元数据侧写；
+- `adjudication-G0-A009.md`：合理替代解释裁决；
+- `reference-discussion.md`：揭示后的参考锚点讨论；
+- `run-manifest.md`：dispatch、哈希、顺序和 G0-only 偏离记录。
 
 ## Completion
 

@@ -160,7 +160,7 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 - 每名评分者使用独立的无状态会话，不继承其他评分者或被测运行的记忆、缓存和中间结果；
 - 在提交前看不到 Answer Key、条件代码、另一评分者记录和一致性统计；
-- 固定并记录 Judge provider、模型精确版本、system/judge prompt hash、采样参数、上下文顺序和工具权限；
+- 固定并记录 Judge provider、模型精确版本、system/judge prompt hash、采样参数、上下文顺序和工具权限；如果 G0/G1 的托管运行时不暴露某字段，必须写 `Not exposed`，并记录最高可用平台标识、canonical task/run ID、时间和产物哈希，不得猜填；
 - 每次评分运行有独立 Judge ID 和 Session / Run ID；
 - 如果评分者与案例、答案或其他评分者使用同源模型，必须记录共同误差和自证循环风险。
 
@@ -443,7 +443,7 @@ benchmark/results/<study-id>/
 ### 18.1 G1 pilot lock
 
 - [x] G0 [评分材料](./calibration/)和 [judging-form.md](./judging-form.md) 完成；
-- [ ] 主要评分维度校准达到一致性门槛；
+- [x] 主要评分维度完成独立校准并达到一致性门槛；
 - [ ] 3 个游戏 Incident 和 Business Reality 完成并封存；
 - [ ] A、B、C 条件通过 Token、泄漏和可读性审计；
 - [ ] 模型、Prompt、输出预算、运行次数和随机化表冻结；

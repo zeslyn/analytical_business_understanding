@@ -6,7 +6,7 @@
 
 **Judges:** Two independent blank-context AI Agents
 
-> Protocol v0.2 不再要求评分者必须是人类。本次结果在数值上达到一致性目标，但由于精确 Judge 运行元数据未完整记录，且必要裁决尚未完成，仍不能解锁 G1。
+> Protocol v0.2 不再要求评分者必须是人类。本次结果在数值上达到一致性目标；未暴露的运行字段作为 G0-only 偏离记录于 [run-manifest.md](./run-manifest.md)，必要裁决与锚点讨论已经完成。
 
 ## 1. Preserved Inputs
 
@@ -58,13 +58,13 @@
 1. 两个空白上下文 Agent 都能按 Judging Form 完成全部字段，说明当前材料和量表在流程上可执行；
 2. 每个主要子维度都覆盖至少 3 个分值，未出现无法解释 alpha 的退化分布；
 3. 所有独立 AI Judge 维度达到 `α ≥ 0.80`，数值一致性门槛已满足；
-4. 两名 Judge 都把 G0-A009 标记为 `candidate-valid-alternative`，因此正式流程仍需独立裁决者；
-5. Answer Key 尚未用于本报告；任何锚点讨论应与原始评分和本统计报告分开记录。
+4. 两名 Judge 都把 G0-A009 标记为 `candidate-valid-alternative`；独立裁决已接受该机制并维持 RCC@3 = 4；
+5. Answer Key 未用于本报告的数值计算；揭示后的讨论单独保存在 [reference-discussion.md](./reference-discussion.md)。
 
 ## 6. Decision
 
 **Independent AI Judge run:** Numeric reliability target met.
 
-**G0 gate:** Remains closed because Judge runtime metadata and required adjudication are incomplete.
+**G0 rubric gate:** Eligible for G1 Pilot with a disclosed G0-only runtime deviation.
 
-下一步应补齐可复现的 Judge 运行元数据，并由不知道条件代码和 Answer Key 的独立第三方评分者处理 G0-A009 和其他必要裁决。评分者可以是满足协议隔离要求的人类或 AI Agent。
+本结果不能用于 F1。G1 的 Judge 指令、最高可用运行标识和产物哈希必须在运行前封存；F1 仍需满足 Protocol v0.2 的完整冻结条件。

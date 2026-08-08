@@ -82,3 +82,7 @@
 5. **错误假设下的有效检查：** 检查是否有效按可执行性和区分价值判断，不因最终假设错误而自动全部记为无效。
 
 任何热点导致锚点修改时，都应在 [calibration-record-template.md](./calibration-record-template.md) 的 Rubric Revision Log 中记录。
+
+## 5. Post-run Record
+
+首次独立评分、G0-A009 裁决和参考锚点讨论见 [G0 post-run reference discussion](../results/g0-calibration-ai-dry-run/reference-discussion.md)。原 provisional table 保留用于审计，不按讨论结果覆盖。
