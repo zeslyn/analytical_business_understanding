@@ -19,7 +19,7 @@
 | Sampling parameters | Platform default；temperature 和 seed `Not exposed` |
 | Visible response budget | 最多 5 个假设、5 个检查，目标不超过 1,200 个中英文词元；硬 Token cap `Not exposed` |
 | Context order | Study instructions → condition document（B/C only）→ Semantic Layer → Incident → shared prompt |
-| Tool access | 分析会话禁止工具调用和外部检索 |
+| Tool access | 只允许一次受控只读 packet loader：`node benchmark/g1/build-run-packet.mjs <Run ID>`；读取后禁止其他工具调用和外部检索 |
 | Memory | 每次运行新建空白上下文；不得 fork 当前 Case-author 对话 |
 | Replicates | 每个 `Incident × condition` 5 次，共 45 次 |
 | Retry | 仅技术故障按原配置重试 1 次；拒答、空洞或截断是有效结果 |
@@ -49,4 +49,4 @@
 
 ## Role separation
 
-当前主任务负责案例写作和运行编排，因此不得作为分析回答生成会话或主要 Judge。分析运行、Judge 和 Adjudicator 必须是 `fork_turns=none` 的独立空白任务，且只获得角色允许的材料。
+当前主任务负责案例写作和运行编排，因此不得作为分析回答生成会话或主要 Judge。分析运行、Judge 和 Adjudicator 必须是 `fork_turns=none` 的独立空白任务，且只获得角色允许的材料。分析 Agent 只可用受控 loader 接收分配到的中性 packet；不得读取 loader 源码、randomization、Business Reality 或其他 Run。
