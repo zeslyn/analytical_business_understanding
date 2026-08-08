@@ -187,7 +187,7 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 | Temperature / sampling parameters | Platform default；`Not exposed` | TBD |
 | Maximum output tokens | 托管硬上限 `Not exposed`；可见回答冻结为最多 5 个假设、5 个检查和目标 1,200 词元 | TBD |
 | Context ordering | 见 [G1 runtime lock](./g1/runtime-lock.md) | TBD |
-| Tool access and data snapshot | 禁止工具调用；共享快照 `sg-analytics-2026-08-07` | TBD |
+| Tool access and data snapshot | 只允许一次受控本地 packet 读取；禁止其他工具调用和外部检索；共享快照 `sg-analytics-2026-08-07` | TBD |
 | Seed handling, if supported | 模型 seed `Not exposed`；运行顺序使用冻结 SHA-256 seed | TBD |
 | Run window | lock commit 后开始；45 个回答完成或检测到 runtime 变化时结束 | TBD |
 
