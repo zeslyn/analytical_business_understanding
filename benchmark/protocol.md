@@ -180,16 +180,16 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 | 字段 | G1 | F1 |
 |---|---|---|
-| Provider / model / exact version | TBD | TBD |
-| API or runtime version | TBD | TBD |
-| System instruction hash | TBD | TBD |
-| Analysis prompt hash | TBD | TBD |
-| Temperature / sampling parameters | TBD | TBD |
-| Maximum output tokens | TBD | TBD |
-| Context ordering | TBD | TBD |
-| Tool access and data snapshot | TBD | TBD |
-| Seed handling, if supported | TBD | TBD |
-| Run window | TBD | TBD |
+| Provider / model / exact version | OpenAI Codex managed runtime；inherited task model，exact build `Not exposed` | TBD |
+| API or runtime version | `Not exposed`；记录 surface、日期和 canonical task ID | TBD |
+| System instruction hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | TBD |
+| Analysis prompt hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | TBD |
+| Temperature / sampling parameters | Platform default；`Not exposed` | TBD |
+| Maximum output tokens | 托管硬上限 `Not exposed`；可见回答冻结为最多 5 个假设、5 个检查和目标 1,200 词元 | TBD |
+| Context ordering | 见 [G1 runtime lock](./g1/runtime-lock.md) | TBD |
+| Tool access and data snapshot | 禁止工具调用；共享快照 `sg-analytics-2026-08-07` | TBD |
+| Seed handling, if supported | 模型 seed `Not exposed`；运行顺序使用冻结 SHA-256 seed | TBD |
+| Run window | lock commit 后开始；45 个回答完成或检测到 runtime 变化时结束 | TBD |
 
 要求：
 
@@ -444,10 +444,10 @@ benchmark/results/<study-id>/
 
 - [x] G0 [评分材料](./calibration/)和 [judging-form.md](./judging-form.md) 完成；
 - [x] 主要评分维度完成独立校准并达到一致性门槛；
-- [ ] 3 个游戏 Incident 和 Business Reality 完成并封存；
-- [ ] A、B、C 条件通过 Token、泄漏和可读性审计；
-- [ ] 模型、Prompt、输出预算、运行次数和随机化表冻结；
-- [ ] G1 明确标记为探索性，不与 F1 合并。
+- [x] 3 个游戏 Incident 和 Business Reality 完成并进入 [G1 seal manifest](./results/g1-game-pilot-v0.1/manifests/input-hashes.sha256)；
+- [x] A、B、C 条件通过 G1 长度代理、托管输出 Token 估算、泄漏和可读性审计；若运行时暴露模型原生 Token，首批运行仍需复核；
+- [x] 模型可得标识、Prompt、输出预算、运行次数和随机化表已在 [G1 runtime lock](./g1/runtime-lock.md) 与 [pilot lock](./g1/pilot-lock.md) 冻结；
+- [x] G1 明确标记为探索性，不与 F1 合并：见 [G1 package](./g1/)。
 
 ### 18.2 F1 preregistration lock
 

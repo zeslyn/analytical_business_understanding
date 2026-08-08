@@ -717,13 +717,7 @@ ABU 应提供高质量先验，但不能把先验变成不可质疑的规则。
 SEMANTIC.md + INCIDENT.md
 ```
 
-### Condition B — ABU
-
-```text
-BUSINESS.md + SEMANTIC.md + INCIDENT.md
-```
-
-### Condition C — Equal-length Domain Notes
+### Condition B — Equal-length Domain Notes
 
 ```text
 与 BUSINESS.md 长度接近的普通业务介绍
@@ -732,6 +726,12 @@ BUSINESS.md + SEMANTIC.md + INCIDENT.md
 ```
 
 用于控制“更多业务文本”和上下文长度效应。
+
+### Condition C — Full ABU
+
+```text
+BUSINESS.md + SEMANTIC.md + INCIDENT.md
+```
 
 ### Condition D — Perturbed ABU
 

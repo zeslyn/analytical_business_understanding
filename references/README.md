@@ -1,7 +1,7 @@
 # Reference Cases
 
-**Classification:** Engineering / Research Evidence  
-**Status:** Planned  
+**Classification:** Engineering / Research Evidence
+**Status:** Game Pilot In Progress
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
 参考案例同时承担两个任务：
@@ -23,13 +23,14 @@
 
 ```text
 BUSINESS.md
+DOMAIN_NOTES.md
 SEMANTIC.md
-INCIDENT_01.md
-INCIDENT_02.md
-INCIDENT_03.md
+incidents/
 BUSINESS_REALITY.md
 README.md
 ```
+
+游戏案例已进入 [G1 launch preparation](../benchmark/g1/)；其他四个行业仍保持 Planned。
 
 ## 防止自证循环
 

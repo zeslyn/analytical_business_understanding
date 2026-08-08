@@ -25,3 +25,4 @@ DR-NNNN-short-title.md
 - [DR-0000 — Template](./DR-0000-template.md)
 - [DR-0001 — Phase 1 execution sequence and evidence gates](./DR-0001-phase-1-execution-sequence.md)
 - [DR-0002 — Benchmark preregistration design](./DR-0002-benchmark-preregistration-design.md)
+- [DR-0003 — G1 game pilot launch design](./DR-0003-g1-game-pilot-launch.md)

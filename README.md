@@ -10,7 +10,7 @@
 |---|---|
 | 研究阶段 | **Phase 1 — Research Foundation** |
 | 最近完成 | **G0 — Rubric calibration**，已满足探索性 G1 Pilot 的量表门禁 |
-| 下一里程碑 | **G1 — Game pilot**，验证端到端可运行性并估计方差 |
+| 当前工作 | **G1 — Game pilot**，输入与运行设计已锁定，当前 0 / 45 个分析输出 |
 | 正式证据 | **尚未进入 F1**；当前结果不得解释为跨行业有效性证据 |
 | 规范成熟度 | Glossary、Protocol、Rubric 与 BUP 设计仍为 provisional，除非明确标记为 Frozen Decision |
 
@@ -41,7 +41,7 @@ flowchart LR
     B --> C["Glossary 与 BUP/RFC<br/>知识表示"]
     B --> D["Protocol 与 Rubric<br/>评测设计"]
     D --> E["G0 评分者校准<br/>已完成"]
-    C --> F["G1 游戏 Pilot<br/>下一步"]
+    C --> F["G1 游戏 Pilot<br/>输入已锁定"]
     E --> F
     F --> G["协议修订与冻结"]
     G --> H["F1 跨行业验证<br/>尚未启动"]
