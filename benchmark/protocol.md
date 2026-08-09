@@ -4,9 +4,9 @@
 
 **Status:** Draft Preregistration — Not Frozen
 
-**Version:** 0.2
+**Version:** 0.3
 
-**Last updated:** 2026-08-08
+**Last updated:** 2026-08-09
 
 **Related Open Questions:** OQ-0006, OQ-0007, OQ-0009, OQ-0010, OQ-0013, OQ-0015, OQ-0019, OQ-0020, OQ-0021, OQ-0026, OQ-0027, OQ-0028, OQ-0029, OQ-0030
 
@@ -14,18 +14,22 @@
 
 > 本文件是可评审的预注册草案，不是已经完成的预注册。第 18 节所有冻结项、评分校准和对应 Decision Record 未完成前，不得开始会进入正式结论的数据生成。
 
+> v0.3 在 G1 后收缩主张边界：当前唯一主要验证目标是显式 ABU 对 LLM 的增量价值。资深分析师能力对标、人类水平非劣效和替代性主张不属于本协议。
+
 ## 1. Decision and Claim Boundary
 
 本协议支持的主要决策是：
 
-> 是否有足够证据继续把显式 ABU 作为独立于 Semantic Layer 的分析知识层，并进入 BUP 规范和跨行业验证？
+> 是否有足够证据表明显式 ABU 能在受控条件下为 LLM 带来可归因、可重复且不损害业务与证据诚信的分析增量，从而继续发展 BUP 规范和跨行业验证？
 
 主要可检验主张是：
 
-> 在相同 Incident、Semantic Layer、模型、Prompt、工具权限和输出预算下，获得显式 ABU 的 AI，比只获得数据语义的 AI 产生更好的根因覆盖、更高质量的假设和更有效率的证据路径。
+> 在相同 Incident、Semantic Layer、模型、Prompt、工具权限和输出预算下，获得显式 ABU 的 LLM，比只获得数据语义或等长普通领域背景的 LLM 产生更好的根因覆盖、更高质量的假设和更有效率的证据路径。
 
 本轮实验不直接证明：
 
+- ABU+LLM 达到、非劣于或能够替代资深分析师；
+- AI Judge 的判断等同于人类专家或现实业务决策；
 - ABU 对真实企业有外部有效性；
 - `BUSINESS.md` 是唯一或最佳载体；
 - Transition 是唯一或普适的核心表示；
@@ -42,15 +46,19 @@ Transition Skeleton、Hybrid View 和 Perturbed ABU 属于次级或探索性模�
 - **RQ2 — Specificity:** Full ABU 的改善是否超过相同长度的普通 Domain Notes，从而不能仅用“更多文本”解释？
 - **RQ3 — Safety:** 改善是否没有以业务冲突、证据误用或对既有 ABU 的盲从为代价？
 
-### 2.2 Confirmatory hypotheses
+### 2.2 Design-moderation question
 
-- **H1:** Full ABU 相比 Baseline 提高 Hypothesis Quality Index。
-- **H2:** Full ABU 相比 Baseline 提高 Root-Cause Coverage@3。
-- **H3:** Full ABU 相比 Baseline 提高 Diagnostic Evidence Efficiency。
+- **RQ4 — Discrimination:** 题目难度和 Prompt 脚手架强度是否造成天花板、输出同质化或对 ABU 作用的替代，从而改变可观察增量？
 
-Full ABU 与 Equal-length Domain Notes 的比较是归因门槛：只有通过该门槛，结果才可以解释为“ABU 特异性价值”，否则最多解释为“额外上下文可能有价值”。
+### 2.3 Confirmatory hypotheses
 
-### 2.3 Exploratory questions
+- **H1:** 弱指令下，Full ABU 相比 Baseline 提高 Hypothesis Quality Index。
+- **H2:** 弱指令下，Full ABU 相比 Baseline 提高 Root-Cause Coverage@3。
+- **H3:** 弱指令下，Full ABU 相比 Baseline 提高 Diagnostic Evidence Efficiency。
+
+弱指令下 Full ABU 与 Equal-length Domain Notes 的比较是归因门槛：只有通过该门槛，结果才可以解释为“ABU 特异性价值”，否则最多解释为“额外上下文可能有价值”。
+
+### 2.4 Exploratory questions
 
 - Transition Skeleton 是否提供独立于知识量的索引价值？
 - Mechanism augmentation 是否优于仅有 Actor、State 和 Transition 的骨架？
@@ -64,11 +72,12 @@ Full ABU 与 Equal-length Domain Notes 的比较是归因门槛：只有通过�
 | 阶段 | 目的 | 案例 | 条件 | 结果用途 |
 |---|---|---|---|---|
 | G0 — Rubric calibration | 检查输出契约、评分锚点和评分一致性 | 不进入 Benchmark 的通用样例 | 可使用任意构造输出 | 只能修改草案和培训评分者 |
-| G1 — Game pilot | 验证端到端可运行性、估计方差、发现泄漏 | 3 个游戏 Incident | A、B、C；每条件每 Incident 暂定 5 次 | 仅探索；不得并入正式效应 |
+| G1 — Game pilot | 验证端到端可运行性、估计方差、发现泄漏 | 3 个游戏 Incident | A、B、C；每条件每 Incident 5 次 | 已完成；只用于发现 Case、Prompt 和 Rubric 缺陷 |
+| G1.1 — Discrimination pilot | 验证较难题目和弱指令能否恢复条件区分度 | 不进入 F1 的新 Incident | A、B、C × 弱/强 Prompt；具体样本量冻结前确定 | 仅用于测量工具与设计修订 |
 | F1 — Cross-industry confirmation | 检验主要假设 | 5 个行业 × 3 个未见 Incident，暂定 15 个 | A、B、C | 正式主要结论 |
 | E1 — Representation and safety | 检验表示与错误先验风险 | 冻结前指定的平衡子集 | T、P、H 等探索条件 | 次级或探索性结论 |
 
-G1 使用过的具体 Incident 和输出不得进入 F1 的验证性样本。F1 Incident 必须在任何正式运行前完成、封存并生成内容哈希。
+G1 和 G1.1 使用过的具体 Incident 与输出不得进入 F1 的验证性样本。F1 Incident 必须在任何正式运行前完成、封存并生成内容哈希。
 
 ## 4. Experimental Conditions
 
@@ -80,7 +89,7 @@ G1 使用过的具体 Incident 和输出不得进入 F1 的验证性样本。F1 
 | B — Domain Notes Control | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | 控制额外业务文本、上下文长度和一般领域提醒 |
 | C — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | 测量显式分析型业务知识的增量价值 |
 
-三个条件共享相同的 Incident、Semantic Layer、分析 Prompt、模型配置、工具权限、输出格式和输出预算。
+在每个冻结的 Prompt 层内，三个条件共享相同的 Incident、Semantic Layer、分析 Prompt、模型配置、工具权限、输出格式和输出预算。跨 Prompt 层的差异是显式实验因素，不得与上下文效应混合解释。
 
 ### 4.2 Domain Notes construction
 
@@ -94,7 +103,18 @@ G1 使用过的具体 Incident 和输出不得进入 F1 的验证性样本。F1 
 
 长度暂定控制在 Full ABU Token 数的 ±5% 内；最终容差必须在协议冻结前确定。该条件只能控制“更多文本”和一般领域知识，不能完全分离内容质量、组织结构和机制表达的独立贡献。
 
-### 4.3 Exploratory conditions
+### 4.3 Prompt strength
+
+G1 显示，详细教授机制、反证、区分性 Evidence 和结论更新方法的 Prompt 可能替代部分 ABU 脚手架，并在简单题目上压缩条件差异。后续设计区分：
+
+| 代码 | Prompt | 用途 |
+|---|---|---|
+| W — Weak instruction | 只规定交付物、数量和预算，不教授具体诊断方法 | 主要 ABU 增量估计 |
+| S — Strong scaffold | 明确要求机制、支持/反证、区分性检查和结果更新 | Prompt 脚手架消融与交互诊断 |
+
+G1.1 应将 A、B、C 与 W、S 交叉。F1 的主要比较默认使用通过 G1.1 区分度门禁的 W；S 只能作为预先声明的次级或敏感性分析，除非新的 Decision Record 另行冻结。
+
+### 4.4 Exploratory conditions
 
 | 代码 | 条件 | 使用限制 |
 |---|---|---|
@@ -120,7 +140,19 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 样本应覆盖不同机制和观测模式，而不是只追求行业数量。
 
-### 5.2 Business Reality and acceptable cause set
+### 5.2 Difficulty and discrimination gate
+
+G1 表明，Incident Evidence 已接近唯一答案时，Baseline 会出现天花板；隐藏答案又比可观察 Evidence 支持的机制更窄时，所有条件会共同受限。候选 Incident 因此必须在任何 Full ABU 结果生成前完成 Baseline-only 难度预试，并按预先冻结的规则筛选：
+
+- 现有 Evidence 至少支持多个合理竞争机制，不能直接暴露唯一答案；
+- Baseline 不应在主要指标上形成大面积天花板或地板；
+- 可接受根因的机制粒度必须与现有 Evidence 和预期 ABU 增量相匹配；
+- Full ABU 应提供可复用的区分性业务知识，但不得包含单次 Incident 答案或近义泄漏；
+- Incident 只能依据 Baseline 难度、机制覆盖和输入质量纳入或排除，不得根据观察到的 `C − A` 或 `C − B` 结果选择。
+
+具体天花板、地板、分值覆盖和难度阈值必须在 G1.1 数据生成前通过 Decision Record 冻结。
+
+### 5.3 Business Reality and acceptable cause set
 
 每个 Incident 必须有不提供给被测模型的 `BUSINESS_REALITY`，其中包含：
 
@@ -133,7 +165,7 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 “命中根因”按机制等价性评分，而不是按关键词匹配。若模型提出隐藏答案之外、但被 Evidence 充分支持的替代解释，评分者必须标记为 `candidate-valid-alternative`，交由独立裁决者判断；不得自动记错。
 
-### 5.3 Exclusion
+### 5.4 Exclusion
 
 只允许在揭盲前按下列原因排除 Incident：
 
@@ -183,7 +215,7 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 | Provider / model / exact version | OpenAI Codex managed runtime；inherited task model，exact build `Not exposed` | TBD |
 | API or runtime version | `Not exposed`；记录 surface、日期和 canonical task ID | TBD |
 | System instruction hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | TBD |
-| Analysis prompt hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | TBD |
+| Analysis prompt hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | W 主要 Prompt 与 S 消融 Prompt 分别冻结，TBD |
 | Temperature / sampling parameters | Platform default；`Not exposed` | TBD |
 | Maximum output tokens | 托管硬上限 `Not exposed`；可见回答冻结为最多 5 个假设、5 个检查和目标 1,200 词元 | TBD |
 | Context ordering | 见 [G1 runtime lock](./g1/runtime-lock.md) | TBD |
@@ -201,7 +233,22 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 ## 8. Observable Response Contract
 
-不收集或推断隐藏 Chain-of-Thought。模型必须提交可审计的分析报告：
+不收集或推断隐藏 Chain-of-Thought。所有条件只提交可观察、可评分的分析报告。
+
+### 8.1 Weak instruction — primary
+
+W 只规定以下交付物：
+
+1. 当前诊断；
+2. 最多 5 个有序假设；
+3. 最多 5 个下一步 Evidence 或检查；
+4. 当前结论和置信度。
+
+W 不规定每个假设必须如何表达机制、支持、反证和不确定性，也不教授检查如何区分候选解释或如何更新结论。这些能力由输出自然呈现，并由 Rubric 评分。
+
+### 8.2 Strong scaffold — ablation
+
+S 保留 G1 的详细分析脚手架：
 
 1. 一段当前诊断；
 2. 最多 5 个按优先级排序的假设；
@@ -211,11 +258,11 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 6. 可能的 ABU/表示不适配、证据冲突或未知机制；
 7. 当前结论和置信度。
 
-三个核心条件使用相同的假设数、检查数和输出 Token 上限。超出上限的内容保留在原始输出中，但超出部分不进入主要评分，并记录格式违规。
+同一 Prompt 层内三个核心条件使用相同的假设数、检查数和输出 Token 上限；W 与 S 也使用相同输出预算。超出上限的内容保留在原始输出中，但超出部分不进入主要评分，并记录格式违规。
 
 ## 9. Randomization and Blinding
 
-- 每个 `Incident × replicate` 内随机化 A、B、C 的执行顺序；
+- 核心实验在每个 `Incident × replicate × Prompt strength` 内随机化 A、B、C；G1.1 还应平衡 W/S 的执行位置；
 - 若支持可复现 Seed，则使用预先生成并封存的随机化表；
 - 原始输出先分配不含条件信息的 Answer ID，再进入评分；
 - 评分顺序按评分者独立随机化，避免相邻比较形成锚定；
@@ -227,11 +274,11 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 ## 10. Repeated Runs and Sample Size
 
-G1 暂定每个 Incident、每个核心条件运行 5 次，用于估计模型随机性、天花板/地板效应和 Incident 内方差。这个数量不是正式效应检验的充分性声明。
+G1 已按每个 Incident、每个核心条件 5 次完成，用于估计模型随机性、天花板/地板效应和 Incident 内方差。这个数量不是正式效应检验的充分性声明。G1.1 的 Incident 数和重复次数必须根据“恢复区分度”的 Pilot 目的单独冻结，不得沿用 G1 数量或根据期望效应倒推。
 
 F1 的样本量按以下顺序确定：
 
-1. 用 G1 或独立校准数据估计 Incident 间和 Incident 内方差；
+1. 用通过区分度门禁的 G1.1 或独立校准数据估计 Incident 间和 Incident 内方差；G1 只作为粗略参考；
 2. 由领域评审根据量表锚点、误判成本和推进决策后果设定每个主要指标的最小实际重要差异（MID），不得按 G1 的条件效应反推；
 3. 用按 Incident 聚类的模拟功效分析确定 Incident 数和重复次数；
 4. 优先增加独立 Incident，而不是只增加同一 Incident 的重复运行；
@@ -303,7 +350,7 @@ F1 在冻结前必须明确评分者组合及其可支持的主张边界。协�
 
 ### 13.2 Primary contrast
 
-主要对比为 `C Full ABU − A Baseline`。对 RCC@3、HQI、DEE：
+主要对比为弱指令层内的 `C-W Full ABU − A-W Baseline`。对 RCC@3、HQI、DEE：
 
 - 报告 Incident 级配对均值差、中位数差和 win/tie/loss；
 - 报告按 Incident 聚类、按行业分层的 95% bootstrap 置信区间；
@@ -313,7 +360,7 @@ F1 在冻结前必须明确评分者组合及其可支持的主张边界。协�
 
 ### 13.3 Specificity gate
 
-仅当主要对比达到推进门槛后，解释 `C Full ABU − B Domain Notes`：
+仅当主要对比达到推进门槛后，解释弱指令层内的 `C-W Full ABU − B-W Domain Notes`：
 
 - 把 RCC@3、HQI、DEE 视为第二个检验族并使用 Holm 校正；
 - HQI 或 DEE 至少一个在校正后达到统计门槛，且点估计达到冻结 MID；
@@ -326,9 +373,9 @@ F1 在冻结前必须明确评分者组合及其可支持的主张边界。协�
 
 F1 推进 ABU 独立知识层需要同时满足：
 
-1. C 相比 A 的三个主要指标中至少两个方向为正，95% CI 不跨 0，且点估计达到各自 MID；
+1. C-W 相比 A-W 的三个主要指标中至少两个方向为正，95% CI 不跨 0，且点估计达到各自 MID；
 2. 其余主要指标没有达到预先冻结的实质性负向差异；
-3. C 相比 A 和 B 均通过 BEI、OWR 非劣效护栏；
+3. C-W 相比 A-W 和 B-W 均通过 BEI、OWR 非劣效护栏；
 4. 通过 13.3 的 ABU 特异性门槛；
 5. 没有足以推翻结论的泄漏、评分不一致或协议偏离。
 
@@ -342,6 +389,7 @@ MID、非劣效界值和功效必须在 F1 数据生成前填入，不允许按�
 - 按 Incident 难度、行业和根因类型分层；
 - 比较 Top-1 与 Top-3 根因覆盖；
 - 比较不同 Judge 类型、模型家族或独立重复运行的评分；若采用 Pairwise Judge，报告双向位置交换结果。
+- 报告 Prompt 脚手架效应 `A-S − A-W`，以及交互诊断 `(C-W − A-W) − (C-S − A-S)`；该结果用于判断强指令是否替代或压缩 ABU 增量，不升级为主要 ABU 效应。
 
 敏感性分析不改变主要推进规则。
 
@@ -373,8 +421,9 @@ MID、非劣效界值和功效必须在 F1 数据生成前填入，不允许按�
 
 ### 15.1 Internal validity
 
-- Token 长度、Prompt、模型和工具权限等价；
+- 同一 Prompt 层内 Token 长度、Prompt、模型和工具权限等价；跨层 Prompt 差异仅作为显式冻结的实验因素；
 - 隐藏答案不出现在条件输入；
+- Incident 通过 Baseline-only 难度与区分度审计，不因观察到的条件效应被选择；
 - 运行顺序随机、会话无状态；
 - 评分者在揭盲前完成评分；
 - 评分一致性达到冻结门槛；
@@ -401,10 +450,11 @@ MID、非劣效界值和功效必须在 F1 数据生成前填入，不允许按�
 
 | 观察结果 | 允许的解释 | 不允许的解释 |
 |---|---|---|
-| C > A 且 C > B，护栏通过 | 显式 ABU 在当前任务中有特异性增量价值 | ABU 已对真实企业普遍有效 |
-| C > A，但 C ≈ B | 更多上下文可能有帮助 | ABU 内容或 BUP 结构已被验证 |
-| C ≈ A | 当前实现、任务或模型未显示增量价值 | ABU 理论必然无效 |
-| C 提升 HQI 但伤害 BEI/OWR | 存在效率—安全权衡，需要修订 | 只按平均总分宣布成功 |
+| C-W > A-W 且 C-W > B-W，护栏通过 | 显式 ABU 在当前任务中有特异性增量价值 | ABU 已对真实企业普遍有效，或 LLM 达到资深分析师水平 |
+| C-W > A-W，但 C-W ≈ B-W | 更多上下文可能有帮助 | ABU 内容或 BUP 结构已被验证 |
+| C-W ≈ A-W | 当前实现、任务或模型未显示增量价值 | ABU 理论必然无效 |
+| C-W 提升 HQI 但伤害 BEI/OWR | 存在效率—安全权衡，需要修订 | 只按平均总分宣布成功 |
+| `C-W − A-W` 大于 `C-S − A-S` | 强 Prompt 可能替代或压缩部分 ABU 脚手架价值 | 弱 Prompt 更符合现实使用，或强 Prompt 本身无价值 |
 | T > B 或 H > C（探索性） | 值得设计专门表示实验 | Transition 或 Hybrid View 已被正式证实 |
 | P 下无法识别冲突 | 错误先验风险成立 | 正常 C 条件的正向结果足以忽略该风险 |
 
@@ -452,15 +502,18 @@ benchmark/results/<study-id>/
 ### 18.2 F1 preregistration lock
 
 - [ ] G1 结果已用于修订，但 G1 Incident 已排除；
+- [ ] G1.1 已验证 Case 与 Rubric 的区分度；G1.1 Incident 已排除；
+- [ ] Baseline-only 难度预试规则、天花板/地板阈值和 Incident 纳入规则已冻结；
 - [ ] F1 Incident、隐藏答案、条件和哈希清单冻结；
 - [ ] RCC@3、HQI、DEE 的 MID 已填写；
 - [ ] BEI、OWR 非劣效界值已填写；
 - [ ] 聚类功效分析和最终样本量已填写；
-- [ ] 精确模型版本、Prompt、配置和运行窗口已填写；
+- [ ] 精确模型版本、W 主要 Prompt、S 消融 Prompt、配置和运行窗口已填写；
 - [ ] 评分者、裁决者和角色隔离已确认；
 - [ ] 分析脚本在盲态模拟数据上通过；
 - [ ] 偏离模板和结果目录已创建；
 - [ ] Decision Record 已 Accepted；
+- [ ] 主张边界明确排除资深分析师水平、替代性和人类非劣效结论；
 - [ ] 带时间戳、只读的协议版本和 Git commit 已记录。
 
 ### 18.3 Approval

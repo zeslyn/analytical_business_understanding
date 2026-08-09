@@ -7,7 +7,7 @@
 
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
-本目录用于验证增加 `BUSINESS.md` 是否改善 AI 的分析表现。
+本目录用于验证增加 `BUSINESS.md` 是否改善 LLM 的分析表现。
 
 ## 当前实验主张
 
@@ -59,7 +59,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 
 ## 当前冻结状态
 
-- Protocol：v0.2，Draft Preregistration — Not Frozen；
+- Protocol：v0.3，Post-G1 Scope Refocus，Draft Preregistration — Not Frozen；
 - Scoring Rubric：v0.2，已为 G1 Pilot 完成校准，尚未 Frozen；
 - Judging Form：v0.2，Draft；
 - G0 Calibration Set：v0.1，G1 Pilot 量表门禁已完成；仅适用于探索性 G1，不适用于 F1；

@@ -3,7 +3,9 @@
 > **项目定位：面向企业分析的业务理解研究与开放规范项目**  
 > **目标读者：Codex、研究参与者、数据分析师、AI 工程师、未来项目维护者**  
 > **当前阶段：Phase 1 — Research Foundation / 第一阶段研究基础建设**  
-> **文档状态：Project Charter v0.1**
+> **文档状态：Project Charter v0.1 — Post-G1 Scope Clarification**
+>
+> **当前主要验证目标：显式 ABU 对 LLM 分析表现的增量价值**
 
 ---
 
@@ -31,13 +33,15 @@
 
 ### Vision
 
-> **让 AI 具备接近资深分析师的企业分析能力。**
+> **让显式 ABU 可验证地改善 LLM 的企业分析表现。**
 
 AI 是本项目的重要使用者，但不是研究对象本身。
 
 本项目不直接研究更强的模型、Prompt、Agent 编排或自动化工作流，而是优先研究：
 
 > **分析推理所依赖的业务知识是什么，以及如何显式表示这些知识。**
+
+资深分析师是项目理解 ABU 来源和性质的重要启发，但“ABU+LLM 是否达到资深分析师水平”不属于当前阶段的主要验证目标。Phase 1 比较的是同一 LLM 在受控条件下有无显式 ABU 时的表现差异，不进行人类能力非劣效或替代性验证。
 
 ---
 
@@ -80,7 +84,7 @@ ABU 只保留对分析推理有直接价值的部分。
 
 ### Hypothesis
 
-> **如果分析型业务理解可以被显式表示，AI 就有可能比仅依赖数据语义时更接近资深分析师的分析方式。**
+> **在模型、Incident、Evidence、Prompt、工具权限和输出预算保持一致时，获得显式 ABU 的 LLM，将比只获得数据语义或等长普通领域背景的 LLM 产生更好的分析结果。**
 
 其逻辑链条为：
 
@@ -204,7 +208,9 @@ ABU 的第一参考实现使用自然语言，而不是 YAML、JSON、DSL 或固
 
 ### 6.1 Vision
 
-> 让 AI 更好地完成企业分析工作。
+> 让显式 ABU 更好地支持 LLM 完成企业分析工作。
+
+当前研究只检验 ABU 对 LLM 的增量，不把“达到资深分析师水平”作为 Phase 1 成功标准。
 
 ### 6.2 Research
 
@@ -349,14 +355,14 @@ Semantic Layer / Data
 
 ### 第一阶段 Mission
 
-> **定义并验证 Analytical Business Understanding 是否可以成为一个独立、合理且有效的分析知识表示层。**
+> **定义 ABU，并验证它能否作为独立于 Semantic Layer 的知识层，为 LLM 带来可归因、可重复且不损害业务与证据诚信的分析增量。**
 
 ### 第一阶段不包含
 
 暂不开展：
 
 - Agent Runtime；
-- Prompt 工程；
+- 以提升单次模型表现为目的的 Prompt 工程；实验中只把 Prompt 强度作为受控或消融因素；
 - 多 Agent 编排；
 - Business Reasoning Engine；
 - 图数据库实现；
@@ -364,6 +370,8 @@ Semantic Layer / Data
 - 企业产品化；
 - 私有化部署；
 - 大规模真实数据接入；
+- ABU+LLM 与资深分析师的能力等价或非劣效比较；
+- “替代分析师”或人类水平能力主张；
 - RFC-0006 及以后内容。
 
 ---
@@ -502,7 +510,7 @@ BUSINESS_REALITY.md
 
 ### 11.6 初步验证实验
 
-实验只验证 ABU/BUP 是否提升 AI 分析，不验证复杂 Agent。
+实验只验证显式 ABU 是否提升 LLM 分析，不验证复杂 Agent，也不验证 LLM 是否达到资深分析师水平。
 
 #### Baseline
 
@@ -512,7 +520,17 @@ SEMANTIC.md
 INCIDENT.md
 ```
 
-#### Experiment
+#### Equal-length Domain Notes Control
+
+```text
+DOMAIN_NOTES.md
++
+SEMANTIC.md
++
+INCIDENT.md
+```
+
+#### Full ABU
 
 ```text
 BUSINESS.md
@@ -525,9 +543,17 @@ INCIDENT.md
 控制变量：
 
 - 使用相同模型；
-- 使用相同分析 Prompt；
+- 在同一 Prompt 层内使用相同分析指令；
 - 使用相同异常数据；
-- 只改变是否提供 BUSINESS.md。
+- 在 A/B/C 主要比较中只改变所提供的业务上下文类型。
+
+主要归因同时要求：
+
+- Full ABU 优于 Baseline，说明存在上下文增量；
+- Full ABU 优于等长 Domain Notes，排除“只是更多文本或一般背景”的解释；
+- BEI、OWR 等护栏没有实质性下降。
+
+G1 已表明题目过易和分析指令过强会压缩条件差异。后续主要实验应使用只规定交付物的弱指令；详细教授机制、反证和 Evidence 更新方法的强指令只作为 Prompt 脚手架消融，不与主要 ABU 效应混为一谈。
 
 评价维度：
 
@@ -689,8 +715,8 @@ Codex 在执行本项目时必须遵守以下规则。
 5. RFC-0000 至 RFC-0005 风格和术语一致；
 6. 五类业务均能使用 BUP 表达；
 7. 至少完成 15 个模拟 Incident；
-8. 完成有无 BUSINESS.md 的对照实验；
-9. 实验结果能够说明 BUP 是否有效；
+8. 完成 Baseline、等长 Domain Notes 与 Full ABU 的受控对照实验；
+9. 实验结果能够说明显式 ABU 在冻结任务与模型边界内是否产生可归因增量；
 10. 所有未解决问题均被明确记录，而不是被隐含忽略。
 
 ---
@@ -718,41 +744,43 @@ Codex 应按以下顺序执行：
 
 ### Step 1
 
-创建项目仓库与目录结构。
+把“ABU 对 LLM 的增量价值”固化为当前唯一主要验证目标，并统一 Charter、Vision、Protocol 与项目首页。
 
 ### Step 2
 
-整理并冻结 `GLOSSARY.md`。
+依据 G1 结果设计 G1.1：提高 Incident 歧义与难度，并把弱指令设为主要 Prompt、强指令设为脚手架消融。
 
 ### Step 3
 
-输出 `MANIFESTO.md`。
+修订 RCC、HQI、DEE、BEI 和 OWR 的评分锚点，使用能覆盖更多分值和失败模式的材料重新校准。
 
 ### Step 4
 
-完成四份 Research Notes。
+在不查看 ABU 条件结果的前提下完成 Baseline-only Case 难度预试，冻结 Incident 纳入规则、输入和哈希。
 
 ### Step 5
 
-按照 RFC-0000 模板重构 RFC-0001 至 RFC-0005。
+运行 G1.1，确认 Case、Prompt 和 Rubric 能形成足够区分度。
 
 ### Step 6
 
-创建游戏参考案例，完成一次端到端模拟。
+根据 G1.1 的方差与测量结果冻结 F1 的 MID、护栏、样本量、模型、Prompt 和 Judge 设计。
 
 ### Step 7
 
-依次扩展电商、外卖、SaaS 和广告案例。
+运行不包含 G1/G1.1 Incident 的跨行业 F1，检验 Full ABU 相对 Baseline 和等长 Domain Notes 的增量。
 
 ### Step 8
 
-完成第一轮对照实验并输出研究总结。
+完成 ABU 增量对照实验并输出具有明确主张边界的研究总结。
 
 ---
 
 ## 18. 项目北极星
 
 > **我们的最终目标是让 AI 更好地完成企业分析。**
+
+> **我们当前唯一的主要验证目标，是显式 ABU 能否为 LLM 带来可测量、可归因的分析增量。**
 
 > **我们的核心研究对象是 Analytical Business Understanding。**
 
