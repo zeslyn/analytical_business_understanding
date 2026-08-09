@@ -10,7 +10,7 @@
 |---|---|
 | 研究阶段 | **Phase 1 — Research Foundation** |
 | 最近完成 | **G0 — Rubric calibration**，已满足探索性 G1 Pilot 的量表门禁 |
-| 当前工作 | **G1 — Game pilot**，分析、双重盲评与一致性计算已完成；21 个匿名答案等待独立裁决 |
+| 当前工作 | **G1 — Game pilot**，45 次分析、双重盲评、一致性计算和 21 个必要裁决已完成；等待封存后揭盲分析 |
 | 正式证据 | **尚未进入 F1**；当前结果不得解释为跨行业有效性证据 |
 | 规范成熟度 | Glossary、Protocol、Rubric 与 BUP 设计仍为 provisional，除非明确标记为 Frozen Decision |
 

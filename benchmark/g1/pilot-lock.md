@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering — Preregistration
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Locked; Reliability Complete; Blind Adjudication Required
+**Status:** Locked; Reliability and Blind Adjudication Complete; Unblinding Not Started
 **Date:** 2026-08-08
 
 ## Gate
