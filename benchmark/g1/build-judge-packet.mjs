@@ -5,10 +5,11 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
 const judgeId = process.argv[2];
+const part = Number(process.argv[3]);
 
 const judgeNumber = { "G1-J01": 1, "G1-J02": 2 }[judgeId];
-if (!judgeNumber) {
-  console.error("Usage: node benchmark/g1/build-judge-packet.mjs G1-J01|G1-J02");
+if (!judgeNumber || !Number.isInteger(part) || part < 0 || part > 10) {
+  console.error("Usage: node benchmark/g1/build-judge-packet.mjs G1-J01|G1-J02 PART(0-10)");
   process.exit(1);
 }
 
@@ -43,25 +44,34 @@ const caseMaterial = Object.entries(incidentFiles)
   .map(([incidentId, path]) => `# Scoring Case ${incidentId}\n\n${read(path)}`)
   .join(divider);
 
-const answers = answerOrder
-  .map((answerId, index) => {
+const renderAnswer = (answerId, index) => {
     const incidentId = incidentByAnswer.get(answerId);
     if (!incidentId) throw new Error(`Missing Incident for ${answerId}`);
     const body = read(`benchmark/results/g1-game-pilot-v0.1/blinded-outputs/${answerId}.md`);
     return `# Answer ${index + 1} of 45\n\nAnswer ID: ${answerId}\nIncident ID: ${incidentId}\n\n${body}`;
-  })
-  .join(divider);
+};
 
-const packet = [
-  `# G1 Blind Judge Packet\n\nJudge ID: ${judgeId}\nTarget path: ${targetPath}\nFrozen answer count: 45`,
-  read("benchmark/g1/judge-instructions.md"),
-  read("benchmark/scoring-rubric.md"),
-  read("benchmark/judging-form.md"),
-  `# Shared Semantic Layer\n\n${read("references/game/SEMANTIC.md")}`,
-  `# Hidden Business Reality for Scoring\n\n${read("references/game/BUSINESS_REALITY.md")}`,
-  caseMaterial,
-  `# Anonymous Answers in Frozen Judge Order\n\n${answers}`,
-].join(divider);
+let packet;
+if (part === 0) {
+  packet = [
+    `# G1 Blind Judge Packet — Part 0 of 10\n\nJudge ID: ${judgeId}\nTarget path: ${targetPath}\nFrozen answer count: 45\nControlled read sequence: parts 0 through 10, exactly once each`,
+    read("benchmark/g1/judge-instructions.md"),
+    read("benchmark/scoring-rubric.md"),
+  ].join(divider);
+} else if (part === 1) {
+  packet = [
+    `# G1 Blind Judge Packet — Part 1 of 10\n\nJudge ID: ${judgeId}\nThis part contains the remaining shared scoring context and no Answers.`,
+    read("benchmark/judging-form.md"),
+    `# Shared Semantic Layer\n\n${read("references/game/SEMANTIC.md")}`,
+    `# Hidden Business Reality for Scoring\n\n${read("references/game/BUSINESS_REALITY.md")}`,
+    caseMaterial,
+  ].join(divider);
+} else {
+  const start = (part - 2) * 5;
+  const selected = answerOrder.slice(start, start + 5);
+  const answers = selected.map((answerId, offset) => renderAnswer(answerId, start + offset)).join(divider);
+  packet = `# G1 Blind Judge Packet — Part ${part} of 10\n\nJudge ID: ${judgeId}\nFrozen positions: ${start + 1}–${start + selected.length}\n\n${answers}`;
+}
 
 if (/G1-R\d{3}/u.test(packet)) {
   console.error("Refusing to emit Judge packet containing a raw Run ID");

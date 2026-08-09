@@ -1,7 +1,7 @@
 # G1 Game Pilot v0.1 Results
 
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Analysis Complete — 45 / 45 Outputs; Blind Judging Not Started
+**Status:** Analysis Complete — 45 / 45 Outputs; Blind Judging Running
 **G1 Package:** [benchmark/g1](../../g1/)
 
 本目录保存 G1 的封存记录、45 个原始回答、盲态回答、独立评分、裁决、分析和偏离。G1 只用于探索性可运行性与方差估计，所有材料永久排除于 F1。

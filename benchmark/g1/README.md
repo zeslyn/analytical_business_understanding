@@ -1,7 +1,7 @@
 # G1 Game Pilot
 
 **Classification:** Research / Engineering
-**Status:** Analysis Complete — 45 / 45 Outputs; Blind Judging Not Started
+**Status:** Analysis Complete — 45 / 45 Outputs; Blind Judging Running
 **Study ID:** `G1-GAME-PILOT-V0.1`
 **Protocol:** [Protocol v0.2](../protocol.md)
 **Decision:** [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
