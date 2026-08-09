@@ -1,7 +1,7 @@
 # G1 Game Pilot
 
 **Classification:** Research / Engineering
-**Status:** Analysis and Blind Judging Complete; Reliability Not Started
+**Status:** Reliability Complete; 21 Blinded Answers Require Adjudication
 **Study ID:** `G1-GAME-PILOT-V0.1`
 **Protocol:** [Protocol v0.2](../protocol.md)
 **Decision:** [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)

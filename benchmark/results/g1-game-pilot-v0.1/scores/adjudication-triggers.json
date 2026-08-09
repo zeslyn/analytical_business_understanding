@@ -1,0 +1,29 @@
+{
+  "study_id": "G1-GAME-PILOT-V0.1",
+  "status": "required-before-unblinding",
+  "generated_from": ["G1-J01.jsonl", "G1-J02.jsonl"],
+  "triggered_answer_count": 21,
+  "triggers": [
+    {"answer_id":"G1-A007","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A008","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A009","reasons":["root-equivalence-disagreement: rank 3 mechanism-equivalent vs partial"]},
+    {"answer_id":"G1-A011","reasons":["root-equivalence-disagreement: rank 3 mechanism-equivalent vs partial"]},
+    {"answer_id":"G1-A012","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A015","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A016","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A022","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A023","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A026","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A027","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A030","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A031","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A033","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A034","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A035","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A037","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A039","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A040","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]},
+    {"answer_id":"G1-A043","reasons":["candidate-valid-alternative"]},
+    {"answer_id":"G1-A044","reasons":["root-equivalence-disagreement: rank 2 mechanism-equivalent vs candidate-valid-alternative","candidate-valid-alternative"]}
+  ]
+}

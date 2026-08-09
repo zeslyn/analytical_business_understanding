@@ -14,8 +14,8 @@
 | Post-spawn checkpoint | `2026-08-09 13:30:25 CST (+0800)`; both canonical tasks accepted |
 | Submission checkpoint | `2026-08-09 13:34:01 CST (+0800)`; both attempts stopped before scoring |
 | Result | Initial delivery failed symmetrically; no initial score retained; fresh-session retry 2 / 2 complete |
-| Reliability status | Closed until both validated score files and runtime sidecars are committed |
-| Unblinding status | Closed |
+| Reliability status | Complete after score commit; 21 Answers triggered adjudication |
+| Unblinding status | Closed pending independent adjudication |
 | Deviation | [G1-D002](../G1-D002-judge-packet-truncation.md) |
 
 本次派发时间在启动两个 Judge 前落盘；两个 spawn 在该时间戳之后、post-spawn checkpoint 之前被系统接受。两名 Judge 只能各调用一次受控 packet loader，随后仅可通过 `apply_patch` 写入各自的 JSONL 评分文件；彼此不可读取评分或中间统计。
