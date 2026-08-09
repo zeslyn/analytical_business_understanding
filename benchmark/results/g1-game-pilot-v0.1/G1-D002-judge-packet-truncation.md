@@ -38,5 +38,5 @@ Discard both failed attempts as pre-score delivery failures and preserve their c
 ## Approval
 
 - Approved by: Run operator under the accepted G1 protocol and the maintainer instruction to continue
-- Decision Record: [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
+- Decision Record: [DR-0003](../../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
 - Date: 2026-08-09

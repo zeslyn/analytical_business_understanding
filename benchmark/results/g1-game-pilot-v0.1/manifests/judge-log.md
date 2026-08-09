@@ -13,8 +13,8 @@
 | Dispatch time | `2026-08-09 13:29:33 CST (+0800)` |
 | Post-spawn checkpoint | `2026-08-09 13:30:25 CST (+0800)`; both canonical tasks accepted |
 | Submission checkpoint | `2026-08-09 13:34:01 CST (+0800)`; both attempts stopped before scoring |
-| Result | Initial delivery failed symmetrically; no score file written; fresh-session retry pending |
-| Reliability status | Closed until both score files are sealed |
+| Result | Initial delivery failed symmetrically; no initial score retained; fresh-session retry 2 / 2 complete |
+| Reliability status | Closed until both validated score files and runtime sidecars are committed |
 | Unblinding status | Closed |
 | Deviation | [G1-D002](../G1-D002-judge-packet-truncation.md) |
 
@@ -30,10 +30,11 @@
 | Files written | None |
 | Retained for analysis | No |
 | Corrective action | Relock identical scoring content as parts `0`–`10`; retry both Judges in fresh blank-context tasks |
-| Retry tasks | Pending |
-| Retry dispatch | Pending |
-| Retry post-spawn checkpoint | Pending |
-| Retry submission checkpoint | Pending |
-| Retry result | Pending |
+| Retry tasks | `/root/g1_j01_retry1`, `/root/g1_j02_retry1` |
+| Retry seal commit | `b0c631423ce57f6218773bce1a673c6fedc12585` |
+| Retry dispatch | `2026-08-09 13:36:14 CST (+0800)` |
+| Retry post-spawn checkpoint | `2026-08-09 13:37:05 CST (+0800)`; both fresh canonical tasks accepted |
+| Retry submission checkpoint | `2026-08-09 13:54:03 CST (+0800)` |
+| Retry result | 2 / 2 complete; 45 / 45 records each; no further retry |
 
 本次调整只改变输入交付分块，不改变 Rubric、Judging Form、Semantic Layer、Business Reality、Incident、匿名答案、Judge 顺序或输出 schema。每个 part 的 stdout SHA-256 已在 [judge-packet-parts.md](./judge-packet-parts.md) 封存。

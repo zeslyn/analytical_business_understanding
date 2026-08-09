@@ -2,7 +2,7 @@
 
 **Classification:** Research / Engineering — Preregistration
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Locked; Analysis Complete — 45 / 45 Outputs; Blind Judging Running
+**Status:** Locked; Analysis and Blind Judging Complete; Reliability Not Started
 **Date:** 2026-08-08
 
 ## Gate
