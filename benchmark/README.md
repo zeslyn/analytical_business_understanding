@@ -3,7 +3,7 @@
 **Classification:** Research / Engineering  
 **Status:** Draft Preregistration
 
-**Last updated:** 2026-08-09
+**Last updated:** 2026-08-10
 
 **Related Glossary:** [GLOSSARY.md](../GLOSSARY.md)
 
@@ -13,7 +13,7 @@
 
 第一轮正式实验只回答：
 
-> 显式 ABU 是否在相同模型、Incident、Semantic Layer 和证据预算下，改善根因覆盖、假设质量和证据效率？
+> 在贴近一般需求表达的 Natural Request 下，显式 ABU 是否在相同模型、Incident、Semantic Layer 和证据预算下，改善根因覆盖、假设质量和证据效率？
 
 Transition 的独立价值、Hybrid View 和错误 ABU 恢复能力属于次级或探索性问题，不能替代主要 ABU 对照。
 
@@ -21,9 +21,11 @@ Transition 的独立价值、Hybrid View 和错误 ABU 恢复能力属于次级�
 
 | 条件 | 输入 | 解释目的 |
 |---|---|---|
-| A — Baseline | `SEMANTIC.md + INCIDENT.md` | 只有数据语义和事件证据 |
-| B — Equal-length Domain Notes | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | 控制更多文本和一般领域知识 |
-| C — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | 测量显式 ABU 的增量价值 |
+| A-N — Baseline | `SEMANTIC.md + INCIDENT.md` | Natural Request 下只有数据语义和事件证据 |
+| B-N — Equal-length Domain Notes | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | Natural Request 下控制更多文本和一般领域知识 |
+| C-N — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | Natural Request 下测量显式 ABU 的增量价值 |
+
+Natural Request 只用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议，不逐项教授 Rubric 中的机制、反证、区分性检查和结论更新方法。G1.1 另以小样本比较 A-S 与 C-S，把 Structured Prompt 作为可替代的系统脚手架；该结果不进入主要效应或 F1 推进规则。
 
 ## 候选控制条件
 
@@ -42,9 +44,10 @@ Transition 的独立价值、Hybrid View 和错误 ABU 恢复能力属于次级�
 ## 分阶段执行
 
 1. **G0 — Rubric calibration：** 用非 Benchmark 样例校准评分量表；
-2. **G1 — Game pilot：** 3 个游戏 Incident，A/B/C 每条件暂定 5 次，仅用于可运行性和方差估计；
-3. **F1 — Cross-industry confirmation：** 暂定 5 行业 × 3 个未见 Incident，样本量在功效分析后冻结；
-4. **E1 — Representation and safety：** 在预先指定子集上探索 Transition、Hybrid View 和 Perturbed ABU。
+2. **G1 — Game pilot：** 3 个游戏 Incident，A/B/C 每条件 5 次，已完成，仅用于可运行性、方差和设计缺陷发现；
+3. **G1.1 — Discrimination pilot：** 主要运行 A-N/B-N/C-N，并以独立小样本运行 A-S/C-S；只用于 Case、Prompt 和 Rubric 修订；
+4. **F1 — Cross-industry confirmation：** 只使用 Natural Request，暂定 5 行业 × 3 个未见 Incident，样本量在功效分析后冻结；
+5. **E1 — Representation and safety：** 在预先指定子集上探索 Transition、Hybrid View 和 Perturbed ABU。
 
 G1 的案例和输出不得进入 F1 的验证性效应估计。
 
@@ -59,7 +62,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 
 ## 当前冻结状态
 
-- Protocol：v0.3，Post-G1 Scope Refocus，Draft Preregistration — Not Frozen；
+- Protocol：v0.4，Natural Request Primary Design，Draft Preregistration — Not Frozen；
 - Scoring Rubric：v0.2，已为 G1 Pilot 完成校准，尚未 Frozen；
 - Judging Form：v0.2，Draft；
 - G0 Calibration Set：v0.1，G1 Pilot 量表门禁已完成；仅适用于探索性 G1，不适用于 F1；

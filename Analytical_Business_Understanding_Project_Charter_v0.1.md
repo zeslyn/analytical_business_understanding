@@ -3,7 +3,7 @@
 > **项目定位：面向企业分析的业务理解研究与开放规范项目**  
 > **目标读者：Codex、研究参与者、数据分析师、AI 工程师、未来项目维护者**  
 > **当前阶段：Phase 1 — Research Foundation / 第一阶段研究基础建设**  
-> **文档状态：Project Charter v0.1 — Post-G1 Scope Clarification**
+> **文档状态：Project Charter v0.1 — Post-G1 Scope and Prompt Design Clarification**
 >
 > **当前主要验证目标：显式 ABU 对 LLM 分析表现的增量价值**
 
@@ -84,7 +84,7 @@ ABU 只保留对分析推理有直接价值的部分。
 
 ### Hypothesis
 
-> **在模型、Incident、Evidence、Prompt、工具权限和输出预算保持一致时，获得显式 ABU 的 LLM，将比只获得数据语义或等长普通领域背景的 LLM 产生更好的分析结果。**
+> **在贴近一般需求表达的 Natural Request 下，当模型、Incident、Evidence、Prompt、工具权限和输出预算保持一致时，获得显式 ABU 的 LLM，将比只获得数据语义或等长普通领域背景的 LLM 产生更好的分析结果。**
 
 其逻辑链条为：
 
@@ -362,7 +362,7 @@ Semantic Layer / Data
 暂不开展：
 
 - Agent Runtime；
-- 以提升单次模型表现为目的的 Prompt 工程；实验中只把 Prompt 强度作为受控或消融因素；
+- 以提升单次模型表现为目的的 Prompt 工程；实验以 Natural Request 为主要条件，只在 G1.1 的 A/C 小样本中把 Structured Prompt 作为替代方案消融；
 - 多 Agent 编排；
 - Business Reasoning Engine；
 - 图数据库实现；
@@ -543,7 +543,7 @@ INCIDENT.md
 控制变量：
 
 - 使用相同模型；
-- 在同一 Prompt 层内使用相同分析指令；
+- A-N、B-N、C-N 使用相同的 Natural Request；
 - 使用相同异常数据；
 - 在 A/B/C 主要比较中只改变所提供的业务上下文类型。
 
@@ -553,7 +553,7 @@ INCIDENT.md
 - Full ABU 优于等长 Domain Notes，排除“只是更多文本或一般背景”的解释；
 - BEI、OWR 等护栏没有实质性下降。
 
-G1 已表明题目过易和分析指令过强会压缩条件差异。后续主要实验应使用只规定交付物的弱指令；详细教授机制、反证和 Evidence 更新方法的强指令只作为 Prompt 脚手架消融，不与主要 ABU 效应混为一谈。
+G1 已表明题目过易和分析指令过强会压缩条件差异。后续主要实验使用贴近一般需求方表达的 Natural Request，不把 Rubric 改写为任务清单。详细教授机制、反证、区分性 Evidence 和结论更新方法的 Structured Prompt 不代表主要使用场景，只在 G1.1 中运行 A-S、C-S 小规模消融，用于判断通用系统脚手架能否替代部分 ABU 增量；它不进入 F1 主要实验或推进规则。
 
 评价维度：
 
@@ -748,7 +748,7 @@ Codex 应按以下顺序执行：
 
 ### Step 2
 
-依据 G1 结果设计 G1.1：提高 Incident 歧义与难度，并把弱指令设为主要 Prompt、强指令设为脚手架消融。
+依据 G1 结果设计 G1.1：提高 Incident 歧义与难度，以 A-N、B-N、C-N 作为 Natural Request 主设计，并只在 A/C 小样本中运行 Structured Prompt 替代性消融。
 
 ### Step 3
 
@@ -760,7 +760,7 @@ Codex 应按以下顺序执行：
 
 ### Step 5
 
-运行 G1.1，确认 Case、Prompt 和 Rubric 能形成足够区分度。
+运行 G1.1，确认 Case、Natural Request 和 Rubric 能形成足够区分度；A-S、C-S 只形成独立的替代性诊断结果。
 
 ### Step 6
 
