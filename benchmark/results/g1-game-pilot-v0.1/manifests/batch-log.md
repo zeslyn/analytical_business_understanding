@@ -157,3 +157,23 @@
 本批 dispatch timestamp 已在启动 Agent 前落盘；三个 spawn 在该时间戳之后、post-spawn checkpoint 之前被系统接受。
 
 每个 Agent 只调用一次受控 packet loader，随后在 final response 中提交正文；Agent 未写入仓库。Run operator 保存原文、生成匿名副本并验证两份 hash 完全一致。
+
+## Batch 09
+
+| Field | Value |
+|---|---|
+| Runs | G1-R025, G1-R026, G1-R027 |
+| Canonical tasks | `/root/g1_r025`, `/root/g1_r026`, `/root/g1_r027` |
+| Context mode | `fork_turns=none` for all three |
+| Input lock commit | `c5502eadd0970ef4902244bf685b0cb2c15724df` |
+| Seal record commit before dispatch | `a0c8b651d9cc5b2614db3e00795831f0336b047d` |
+| Dispatch timestamp recorded at | `2026-08-09 12:08:13 CST (+0800)` |
+| Dispatch time | `2026-08-09 12:08:13 CST (+0800)` |
+| Post-spawn checkpoint | `2026-08-09 12:09:03 CST (+0800)`; all three canonical tasks accepted |
+| Completion checkpoint | `2026-08-09 12:14:42 CST (+0800)` |
+| Result | 3 / 3 complete; no retry |
+| Deviation | None |
+
+本批 dispatch timestamp 已在启动 Agent 前落盘；三个 spawn 在该时间戳之后、post-spawn checkpoint 之前被系统接受。
+
+每个 Agent 只调用一次受控 packet loader，随后在 final response 中提交正文；Agent 未写入仓库。Run operator 保存原文、生成匿名副本并验证两份 hash 完全一致。
