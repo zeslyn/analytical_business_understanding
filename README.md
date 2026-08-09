@@ -10,7 +10,7 @@
 |---|---|
 | 研究阶段 | **Phase 1 — Research Foundation** |
 | 最近完成 | **G1 — Game pilot**，45 次分析、双重盲评、21 个裁决和揭盲报告已完成 |
-| 当前工作 | **Post-G1 scope and design revision**：聚焦 ABU 对 LLM 的增量，修订 Case 难度、Prompt 强度、Rubric 与 F1 前提 |
+| 当前工作 | **G1.1 design revision**：以 Natural Request 为主设计，修订 Case 难度、Rubric 与 F1 前提，并保留小规模 Structured Prompt 消融 |
 | 正式证据 | **尚未进入 F1**；当前结果不得解释为跨行业有效性证据 |
 | 规范成熟度 | Glossary、Protocol、Rubric 与 BUP 设计仍为 provisional，除非明确标记为 Frozen Decision |
 
@@ -20,7 +20,9 @@
 
 > 企业分析所依赖的业务理解能否被显式表示，并在受控条件下为 LLM 带来可测量、可归因的分析增量？
 
-当前核心假设是：在模型、Incident、Evidence、Prompt、工具权限和输出预算相同的条件下，获得显式 ABU 的 LLM，将比只获得数据语义或等长普通领域背景的 LLM 生成更合理的业务假设、采用更短的验证路径，并形成更可信的分析结论。
+当前核心假设是：在贴近一般需求表达的 Natural Request 下，当模型、Incident、Evidence、Prompt、工具权限和输出预算相同，获得显式 ABU 的 LLM，将比只获得数据语义或等长普通领域背景的 LLM 生成更合理的业务假设、采用更短的验证路径，并形成更可信的分析结论。
+
+主要实验比较 `A-N Baseline / B-N Domain Notes / C-N Full ABU`。详细教授机制、反证、区分性检查和结论更新的 Structured Prompt 不代表主要需求场景，只在 G1.1 的 `A-S / C-S` 小样本中检查它能否替代部分 ABU 增量；F1 主要实验不使用 S。
 
 完整研究动机、边界和 Phase 1 交付物见 [Project Charter](./Analytical_Business_Understanding_Project_Charter_v0.1.md) 与 [VISION.md](./VISION.md)。
 
@@ -43,7 +45,7 @@ flowchart LR
     D --> E["G0 评分者校准<br/>已完成"]
     C --> F["G1 游戏 Pilot<br/>已完成"]
     E --> F
-    F --> G["G1.1 区分度 Pilot<br/>设计中"]
+    F --> G["G1.1 区分度 Pilot<br/>Natural Request 主设计"]
     G --> H["协议修订与冻结"]
     H --> I["F1 跨行业验证<br/>尚未启动"]
 ```
@@ -57,7 +59,7 @@ G1 使用 3 个合成游戏 Incident、A/B/C 三个条件和每个 cell 5 次运
 - 端到端执行、匿名化、评分、裁决和揭盲流程可以运行；
 - 未观察到 Full ABU 的探索性增量：相对 Baseline 的 RCC@3、HQI、DEE 差异为 `−0.200`、`−0.008`、`0.000`；
 - I01/I03 的 Baseline 已接近 RCC 天花板，I02 又依赖过窄的隐藏机制，Case 区分力不足；
-- G1 的详细分析指令可能替代部分 ABU 脚手架作用，使三个条件的输出进一步同质化；
+- G1 的详细分析指令可能替代部分 ABU 脚手架作用，使三个条件的输出进一步同质化；后续主要 Prompt 已改为 Natural Request；
 - 多个 Rubric 维度出现 Judge 锚点偏移或完整天花板，不能直接进入 F1。
 
 详见 [G1 Exploratory Unblinded Report](./benchmark/results/g1-game-pilot-v0.1/analysis/pilot-report.md)。这不是 ABU 无效的结论，而是 F1 前必须重新设计测量工具的证据。
@@ -82,7 +84,7 @@ G0 使用不进入正式 Benchmark 的材料检查评分量表是否可执行、
 | 项目为什么存在、Phase 1 做什么 | [Project Charter](./Analytical_Business_Understanding_Project_Charter_v0.1.md) · [VISION.md](./VISION.md) | Foundation |
 | ABU 的定义、边界和核心假设 | [Research Notes](./research/) · [GLOSSARY.md](./GLOSSARY.md) | Draft v0.1 / Provisional |
 | 当前先做什么、为什么这样排序 | [DR-0001](./docs/decisions/DR-0001-phase-1-execution-sequence.md) | Accepted |
-| 如何验证 ABU 的增量价值 | [Benchmark Overview](./benchmark/) · [Protocol](./benchmark/protocol.md) | Draft Preregistration v0.3 |
+| 如何验证 ABU 的增量价值 | [Benchmark Overview](./benchmark/) · [Protocol](./benchmark/protocol.md) | Draft Preregistration v0.4 |
 | 如何评价分析回答 | [Scoring Rubric](./benchmark/scoring-rubric.md) · [Judging Form](./benchmark/judging-form.md) | Calibrated for G1 / Not Frozen |
 | G0 的材料、结果和限制 | [Calibration Package](./benchmark/calibration/) · [Results](./benchmark/results/g0-calibration-ai-dry-run/) | Complete for G1 / Not for F1 |
 | G1 的运行、评分和探索性结论 | [G1 Package](./benchmark/g1/) · [G1 Report](./benchmark/results/g1-game-pilot-v0.1/analysis/pilot-report.md) | Complete / Revision required |
@@ -98,7 +100,7 @@ G0 使用不进入正式 Benchmark 的材料检查评分量表是否可执行、
 - [ ] 起草 BUP RFC 与 `BUSINESS.md` 最小规范；
 - [x] 完成 G1 游戏案例端到端 Pilot；
 - [ ] 根据 G1 结果修订理论、表示协议和评测协议；
-- [ ] 完成 G1.1 题目难度与 Prompt 强度区分度 Pilot；
+- [ ] 完成 G1.1 题目难度与 Natural Request 区分度 Pilot，并独立完成 A-S/C-S Structured Prompt 小规模消融；
 - [ ] 冻结 F1 所需的模型、Prompt、MID、护栏、功效和角色隔离设计；
 - [ ] 运行 F1 跨行业验证并形成 Phase 1 研究总结。
 
