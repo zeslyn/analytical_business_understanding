@@ -2,7 +2,7 @@
 
 本目录保存两个独立 Judge 的完整原始评分、runtime sidecar、一致性报告和必要裁决。揭盲前不得写入条件代码或条件对比。
 
-**Status:** Reliability and Blind Adjudication Complete; Unblinding Not Started
+**Status:** Reliability and Blind Adjudication Complete; Analysis Unblinded
 
 - `G1-J01.jsonl`：45 个匿名 Answer 的第一份冻结顺序评分；
 - `G1-J02.jsonl`：45 个匿名 Answer 的第二份冻结顺序评分；

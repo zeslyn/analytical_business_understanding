@@ -1,7 +1,7 @@
 # G1 Game Pilot
 
 **Classification:** Research / Engineering
-**Status:** Reliability and Blind Adjudication Complete; Unblinding Not Started
+**Status:** Complete — Exploratory Pilot; Revision Required Before F1
 **Study ID:** `G1-GAME-PILOT-V0.1`
 **Protocol:** [Protocol v0.2](../protocol.md)
 **Decision:** [DR-0003](../../docs/decisions/DR-0003-g1-game-pilot-launch.md)
@@ -35,6 +35,8 @@ G1 是探索性端到端 Pilot，用于验证 A/B/C 条件是否可运行、评�
 - [deviation-template.md](./deviation-template.md)：运行故障或协议偏离模板。
 
 案例输入见 [references/game](../../references/game/)。运行产物写入 [results/g1-game-pilot-v0.1](../results/g1-game-pilot-v0.1/)。
+
+G1 最终结果见 [Exploratory Unblinded Report](../results/g1-game-pilot-v0.1/analysis/pilot-report.md)：流程可运行，但未观察到 Full ABU 的探索性增量，且 Case 区分力和多项评分锚点不足以进入 F1。
 
 ## Role and access matrix
 

@@ -1,7 +1,7 @@
 # G1 Deviations Register
 
 **Study ID:** `G1-GAME-PILOT-V0.1`
-**Status:** Two deviations recorded before unblinding; both retained with explicit disposition
+**Status:** Complete; two deviations recorded before unblinding, both retained with explicit disposition, no post-unblinding exclusion
 
 | Deviation ID | Discovered at | Runs | Before unblinding | Disposition | Record |
 |---|---|---|---|---|---|

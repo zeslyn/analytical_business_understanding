@@ -9,8 +9,8 @@
 | 项目项 | 当前状态 |
 |---|---|
 | 研究阶段 | **Phase 1 — Research Foundation** |
-| 最近完成 | **G0 — Rubric calibration**，已满足探索性 G1 Pilot 的量表门禁 |
-| 当前工作 | **G1 — Game pilot**，45 次分析、双重盲评、一致性计算和 21 个必要裁决已完成；等待封存后揭盲分析 |
+| 最近完成 | **G1 — Game pilot**，45 次分析、双重盲评、21 个裁决和揭盲报告已完成 |
+| 当前工作 | **Post-G1 revision**：修订 Case 区分力、Rubric 锚点、Judge 设计和 F1 功效前提 |
 | 正式证据 | **尚未进入 F1**；当前结果不得解释为跨行业有效性证据 |
 | 规范成熟度 | Glossary、Protocol、Rubric 与 BUP 设计仍为 provisional，除非明确标记为 Frozen Decision |
 
@@ -41,15 +41,26 @@ flowchart LR
     B --> C["Glossary 与 BUP/RFC<br/>知识表示"]
     B --> D["Protocol 与 Rubric<br/>评测设计"]
     D --> E["G0 评分者校准<br/>已完成"]
-    C --> F["G1 游戏 Pilot<br/>输入已锁定"]
+    C --> F["G1 游戏 Pilot<br/>已完成"]
     E --> F
-    F --> G["协议修订与冻结"]
+    F --> G["协议修订与冻结<br/>进行中"]
     G --> H["F1 跨行业验证<br/>尚未启动"]
 ```
 
 执行顺序和证据门禁由 [DR-0001](./docs/decisions/DR-0001-phase-1-execution-sequence.md) 规定；Benchmark 的配对、盲评设计见 [DR-0002](./docs/decisions/DR-0002-benchmark-preregistration-design.md)。
 
-## 当前证据：G0 评分者校准
+## 当前证据：G1 游戏 Pilot
+
+G1 使用 3 个合成游戏 Incident、A/B/C 三个条件和每个 cell 5 次运行，完成了 45 个独立输出、双重盲评和独立裁决：
+
+- 端到端执行、匿名化、评分、裁决和揭盲流程可以运行；
+- 未观察到 Full ABU 的探索性增量：相对 Baseline 的 RCC@3、HQI、DEE 差异为 `−0.200`、`−0.008`、`0.000`；
+- I01/I03 的 Baseline 已接近 RCC 天花板，I02 又依赖过窄的隐藏机制，Case 区分力不足；
+- 多个 Rubric 维度出现 Judge 锚点偏移或完整天花板，不能直接进入 F1。
+
+详见 [G1 Exploratory Unblinded Report](./benchmark/results/g1-game-pilot-v0.1/analysis/pilot-report.md)。这不是 ABU 无效的结论，而是 F1 前必须重新设计测量工具的证据。
+
+## 此前证据：G0 评分者校准
 
 G0 使用不进入正式 Benchmark 的材料检查评分量表是否可执行、评分者是否能稳定应用评分锚点：
 
@@ -72,6 +83,7 @@ G0 使用不进入正式 Benchmark 的材料检查评分量表是否可执行、
 | 如何验证 ABU 的增量价值 | [Benchmark Overview](./benchmark/) · [Protocol](./benchmark/protocol.md) | Draft Preregistration v0.2 |
 | 如何评价分析回答 | [Scoring Rubric](./benchmark/scoring-rubric.md) · [Judging Form](./benchmark/judging-form.md) | Calibrated for G1 / Not Frozen |
 | G0 的材料、结果和限制 | [Calibration Package](./benchmark/calibration/) · [Results](./benchmark/results/g0-calibration-ai-dry-run/) | Complete for G1 / Not for F1 |
+| G1 的运行、评分和探索性结论 | [G1 Package](./benchmark/g1/) · [G1 Report](./benchmark/results/g1-game-pilot-v0.1/analysis/pilot-report.md) | Complete / Revision required |
 | 尚未解决的问题 | [OPEN_QUESTIONS.md](./OPEN_QUESTIONS.md) | Active register |
 | 如何参与 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Project rules |
 
@@ -82,7 +94,7 @@ G0 使用不进入正式 Benchmark 的材料检查评分量表是否可执行、
 - [x] 建立 Benchmark Protocol、Scoring Rubric 和 Judging Form 预注册草案；
 - [x] 完成 G0 独立评分者校准，并解锁探索性 G1 量表门禁；
 - [ ] 起草 BUP RFC 与 `BUSINESS.md` 最小规范；
-- [ ] 完成 G1 游戏案例端到端 Pilot；
+- [x] 完成 G1 游戏案例端到端 Pilot；
 - [ ] 根据 G1 结果修订理论、表示协议和评测协议；
 - [ ] 冻结 F1 所需的模型、Prompt、MID、护栏、功效和角色隔离设计；
 - [ ] 运行 F1 跨行业验证并形成 Phase 1 研究总结。
