@@ -29,7 +29,7 @@
 | Judge packet-part hash manifest | `d1cf6cb7293c85bbb42aa2cc8d600fac7982e00ffb64a000b0806559bfcaa281` |
 
 - Initial single-packet implementation commit: `a633aea`
-- Chunked-delivery implementation commit: Pending relock commit
+- Chunked-delivery implementation commit: `c4e926d2b4ad58f47945e927b95ab0f0b15c3efc`
 - Analysis-output completion commit: `877a3d99a0d105f0c31a5bf2e37eea76dab5035a`
 - Judge type: independent AI Agent
 - Provider / model: OpenAI Codex managed runtime; inherited task model; exact build `Not exposed`
