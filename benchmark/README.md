@@ -22,10 +22,12 @@ Transition 的独立价值、Hybrid View 和错误 ABU 恢复能力属于次级�
 | 条件 | 输入 | 解释目的 |
 |---|---|---|
 | A-N — Baseline | `SEMANTIC.md + INCIDENT.md` | Natural Request 下只有数据语义和事件证据 |
-| B-N — Equal-length Domain Notes | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | Natural Request 下控制更多文本和一般领域知识 |
+| B-N — Equal-length Basic Domain Notes | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | Natural Request 下控制更多文本和一般领域知识 |
 | C-N — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | Natural Request 下测量显式 ABU 的增量价值 |
 
-Natural Request 只用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议，不逐项教授 Rubric 中的机制、反证、区分性检查和结论更新方法。G1.1 另以小样本比较 A-S 与 C-S，把 Structured Prompt 作为可替代的系统脚手架；该结果不进入主要效应或 F1 推进规则。
+Natural Request 只用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议，不逐项教授 Rubric 中的机制、反证、区分性检查和结论更新方法。G1.1 和 F1 只使用 A-N/B-N/C-N；Prompt 与表示消融如有必要将进入独立研究。
+
+候选 Incident 必须同时满足根因机制深度与难度门禁：存在多个共享表面症状的合理竞争解释，正确排序要求综合至少两类独立 Evidence 完成多步机制推断，不存在可单独泄露答案的句子或数字，并在 Full ABU 输出生成前通过多次独立 Baseline-only 预试。
 
 ## 候选控制条件
 
@@ -45,7 +47,7 @@ Natural Request 只用一般需求方可能采用的语言提出分析目标、�
 
 1. **G0 — Rubric calibration：** 用非 Benchmark 样例校准评分量表；
 2. **G1 — Game pilot：** 3 个游戏 Incident，A/B/C 每条件 5 次，已完成，仅用于可运行性、方差和设计缺陷发现；
-3. **G1.1 — Discrimination pilot：** 主要运行 A-N/B-N/C-N，并以独立小样本运行 A-S/C-S；只用于 Case、Prompt 和 Rubric 修订；
+3. **G1.1 — Discrimination pilot：** 只运行 A-N/B-N/C-N，用于根因机制深度、Case 难度、对照公平性、Natural Request 和 Rubric 修订；
 4. **F1 — Cross-industry confirmation：** 只使用 Natural Request，暂定 5 行业 × 3 个未见 Incident，样本量在功效分析后冻结；
 5. **E1 — Representation and safety：** 在预先指定子集上探索 Transition、Hybrid View 和 Perturbed ABU。
 
@@ -62,7 +64,7 @@ G1 的案例和输出不得进入 F1 的验证性效应估计。
 
 ## 当前冻结状态
 
-- Protocol：v0.4，Natural Request Primary Design，Draft Preregistration — Not Frozen；
+- Protocol：v0.5，Three-condition Natural Request Design，Draft Preregistration — Not Frozen；
 - Scoring Rubric：v0.2，已为 G1 Pilot 完成校准，尚未 Frozen；
 - Judging Form：v0.2，Draft；
 - G0 Calibration Set：v0.1，G1 Pilot 量表门禁已完成；仅适用于探索性 G1，不适用于 F1；

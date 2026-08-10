@@ -25,7 +25,7 @@
 
 ## Research Object
 
-本项目的研究对象是 Analytical Business Understanding（ABU），而不是模型、Prompt 或 Agent 编排。模型和 Prompt 只作为验证 ABU 增量价值时必须控制的实验因素；Structured Prompt 仅在小规模消融中作为可能替代 ABU 脚手架的对照。
+本项目的研究对象是 Analytical Business Understanding（ABU），而不是模型、Prompt 或 Agent 编排。模型和 Prompt 只作为验证 ABU 增量价值时必须控制的实验因素；G1.1 和 F1 不混入 Prompt 或表示消融，相关问题如有必要将另行预注册研究。
 
 ABU 关注分析推理所必需的业务知识，以及这些知识能否以人和 AI 都能理解的方式显式表达。
 
@@ -69,8 +69,8 @@ ABU 关注分析推理所必需的业务知识，以及这些知识能否以人�
 - Transition 是否提供了足够的分析解释力？
 - `BUSINESS.md` 是否能一致地表达所需知识？
 - 在受控条件下，`BUSINESS.md` 是否改善 LLM 的分析表现？
-- 观察到的改善是否超过等长 Domain Notes，而不能只用更多文本或一般背景解释？
-- 题目难度是否掩盖了 ABU 的增量？在独立小规模消融中，Structured Prompt 是否能够替代或压缩该增量？
+- 观察到的改善是否超过等长 Basic Domain Notes，而不能只用更多文本或一般背景解释？
+- Incident 的根因机制深度、竞争解释和 Evidence 设计是否足以避免模型仅凭题面高概率猜中，同时仍然保持可分析、可评分？
 - 哪些失败模式、反例和未解决问题仍然存在？
 
 “ABU+LLM 是否达到资深分析师水平”属于可能的长期扩展，不是 Phase 1 完成标准。

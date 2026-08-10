@@ -4,7 +4,7 @@
 
 **Status:** Draft Preregistration — Not Frozen
 
-**Version:** 0.4
+**Version:** 0.5
 
 **Last updated:** 2026-08-10
 
@@ -17,6 +17,8 @@
 > v0.3 在 G1 后收缩主张边界：当前唯一主要验证目标是显式 ABU 对 LLM 的增量价值。资深分析师能力对标、人类水平非劣效和替代性主张不属于本协议。
 
 > v0.4 将贴近一般需求表达的 Natural Request 设为唯一主要 Prompt。Structured Prompt 不代表主要使用场景，只在 G1.1 的 A/C 小样本中作为替代方案消融；F1 主要实验不使用 Structured Prompt。
+
+> v0.5 将 G1.1 收缩为 A-N、B-N、C-N 三个 Natural Request 条件，移除 Prompt 与表示消融，并强化 Incident 根因难度和机制深度门禁。当前实验只验证完整 ABU 知识包相对 Baseline 与 Basic Domain Notes 的增量。
 
 ## 1. Decision and Claim Boundary
 
@@ -45,12 +47,12 @@ Transition Skeleton、Hybrid View 和 Perturbed ABU 属于次级或探索性模�
 ### 2.1 Primary questions
 
 - **RQ1 — Incremental value:** Full ABU 相比 Baseline 是否改善主要结果？
-- **RQ2 — Specificity:** Full ABU 的改善是否超过相同长度的普通 Domain Notes，从而不能仅用“更多文本”解释？
+- **RQ2 — Specificity:** Full ABU 的改善是否超过相同长度的 Basic Domain Notes，从而不能仅用“更多文本”解释？
 - **RQ3 — Safety:** 改善是否没有以业务冲突、证据误用或对既有 ABU 的盲从为代价？
 
 ### 2.2 Design-moderation question
 
-- **RQ4 — Design diagnosis:** 题目难度是否造成天花板或输出同质化？在独立的小规模消融中，结构化 Prompt 是否替代或压缩 ABU 的可观察增量？
+- **RQ4 — Design diagnosis:** 题目难度和根因机制深度是否足以避免 Baseline 靠题面线索高概率猜中，同时又允许 Evidence 支持可评分的竞争解释？
 
 ### 2.3 Confirmatory hypotheses
 
@@ -58,7 +60,7 @@ Transition Skeleton、Hybrid View 和 Perturbed ABU 属于次级或探索性模�
 - **H2:** Natural Request 下，Full ABU 相比 Baseline 提高 Root-Cause Coverage@3。
 - **H3:** Natural Request 下，Full ABU 相比 Baseline 提高 Diagnostic Evidence Efficiency。
 
-Natural Request 下 Full ABU 与 Equal-length Domain Notes 的比较是归因门槛：只有通过该门槛，结果才可以解释为“ABU 特异性价值”，否则最多解释为“额外上下文可能有价值”。
+Natural Request 下 Full ABU 与 Equal-length Basic Domain Notes 的比较是归因门槛：只有通过该门槛，结果才可以解释为“ABU 特异性价值”，否则最多解释为“额外上下文可能有价值”。
 
 ### 2.4 Exploratory questions
 
@@ -75,7 +77,7 @@ Natural Request 下 Full ABU 与 Equal-length Domain Notes 的比较是归因门
 |---|---|---|---|---|
 | G0 — Rubric calibration | 检查输出契约、评分锚点和评分一致性 | 不进入 Benchmark 的通用样例 | 可使用任意构造输出 | 只能修改草案和培训评分者 |
 | G1 — Game pilot | 验证端到端可运行性、估计方差、发现泄漏 | 3 个游戏 Incident | A、B、C；每条件每 Incident 5 次 | 已完成；只用于发现 Case、Prompt 和 Rubric 缺陷 |
-| G1.1 — Discrimination pilot | 验证较难题目和 Natural Request 能否恢复条件区分度，并小规模检查结构化 Prompt 的替代效应 | 不进入 F1 的新 Incident | 主要：A-N、B-N、C-N；消融：A-S、C-S；具体样本量冻结前确定 | 主要部分修订测量工具；S 结果只作设计诊断 |
+| G1.1 — Discrimination pilot | 验证具有足够根因深度的新题目和 Natural Request 能否形成可评分区分度 | 不进入 F1 的新 Incident | A-N、B-N、C-N；具体样本量冻结前确定 | 只用于 Case、Prompt、对照公平性和 Rubric 修订 |
 | F1 — Cross-industry confirmation | 在 Natural Request 下检验主要假设 | 5 个行业 × 3 个未见 Incident，暂定 15 个 | A-N、B-N、C-N | 正式主要结论 |
 | E1 — Representation and safety | 检验表示与错误先验风险 | 冻结前指定的平衡子集 | T、P、H 等探索条件 | 次级或探索性结论 |
 
@@ -88,12 +90,12 @@ G1 和 G1.1 使用过的具体 Incident 与输出不得进入 F1 的验证性样
 | 代码 | 输入 | 目的 |
 |---|---|---|
 | A — Baseline | `SEMANTIC.md + INCIDENT.md` | 测量只有数据语义和事件证据时的表现 |
-| B — Domain Notes Control | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | 控制额外业务文本、上下文长度和一般领域提醒 |
+| B — Basic Domain Notes Control | `DOMAIN_NOTES.md + SEMANTIC.md + INCIDENT.md` | 控制额外业务文本、上下文长度和一般领域提醒 |
 | C — Full ABU | `BUSINESS.md + SEMANTIC.md + INCIDENT.md` | 测量显式分析型业务知识的增量价值 |
 
-三个核心条件在 Natural Request 下共享相同的 Incident、Semantic Layer、分析 Prompt、模型配置、工具权限、输出格式和输出预算。Structured Prompt 消融只比较 A-S 与 C-S，并与主要 A-N/B-N/C-N 结果分开报告，不得混入正式上下文效应。
+三个核心条件在 Natural Request 下共享相同的 Incident、Semantic Layer、分析 Prompt、模型配置、工具权限、输出格式和输出预算，只改变是否以及提供哪一类业务上下文。
 
-### 4.2 Domain Notes construction
+### 4.2 Basic Domain Notes construction
 
 `DOMAIN_NOTES.md` 应：
 
@@ -105,16 +107,15 @@ G1 和 G1.1 使用过的具体 Incident 与输出不得进入 F1 的验证性样
 
 长度暂定控制在 Full ABU Token 数的 ±5% 内；最终容差必须在协议冻结前确定。该条件只能控制“更多文本”和一般领域知识，不能完全分离内容质量、组织结构和机制表达的独立贡献。
 
-### 4.3 Prompt roles
+### 4.3 Primary prompt
 
-G1 显示，详细教授机制、反证、区分性 Evidence 和结论更新方法的 Prompt 可能替代部分 ABU 脚手架，并在简单题目上压缩条件差异。一般需求提出方通常不会这样表达任务，因此主要实验不再把“弱/强指令”视为对等因素，而是区分真实主条件和替代方案消融：
+G1 显示，详细教授机制、反证、区分性 Evidence 和结论更新方法的 Prompt 可能替代部分 ABU 脚手架，并在简单题目上压缩条件差异。一般需求提出方通常不会这样表达任务，因此 G1.1 和 F1 只使用 Natural Request：
 
 | 代码 | Prompt | 用途 |
 |---|---|---|
-| N — Natural Request | 用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议；不逐项教授 Rubric 对应的诊断方法 | G1.1 和 F1 的唯一主要 Prompt |
-| S — Structured Prompt Control | 明确要求机制、支持/反证、区分性检查和结果更新 | 仅用于 G1.1 的 A/C 小规模替代方案消融 |
+| N — Natural Request | 用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议；不逐项教授 Rubric 对应的诊断方法 | G1.1 和 F1 的唯一 Prompt |
 
-主要设计为 `A-N / B-N / C-N`。G1.1 另在预先指定、同时进入 N 条件的相同 Incident 子集上，以匹配的重复次数运行 `A-S / C-S`，用于判断结构化系统脚手架是否能够替代或压缩 ABU 增量；不运行 B-S，除非新的 Decision Record 说明额外科学问题和样本成本。S 结果不进入主要效应估计、G1.1 区分度门禁或 F1 推进规则。F1 不运行 S，除非未来独立研究另行预注册。
+主要设计固定为 `A-N / B-N / C-N`。Structured Prompt、Business Narrative、Transition Skeleton 和其他表示消融不进入 G1.1 或 F1；若未来需要判断增益来自内容、索引还是表达结构，必须进入独立研究并重新预注册。
 
 ### 4.4 Exploratory conditions
 
@@ -144,15 +145,28 @@ F1 暂定覆盖电商、外卖、SaaS、游戏和广告，每个行业 3 个 Inc
 
 ### 5.2 Difficulty and discrimination gate
 
-G1 表明，Incident Evidence 已接近唯一答案时，Baseline 会出现天花板；隐藏答案又比可观察 Evidence 支持的机制更窄时，所有条件会共同受限。候选 Incident 因此必须在任何 Full ABU 结果生成前完成 Baseline-only 难度预试，并按预先冻结的规则筛选：
+G1 表明，Incident Evidence 已接近唯一答案时，Baseline 会出现天花板；隐藏答案又比可观察 Evidence 支持的机制更窄时，所有条件会共同受限。候选 Incident 因此必须同时通过构造审计和 Baseline-only 难度预试。
 
-- 现有 Evidence 至少支持多个合理竞争机制，不能直接暴露唯一答案；
-- Baseline 不应在主要指标上形成大面积天花板或地板；
-- 可接受根因的机制粒度必须与现有 Evidence 和预期 ABU 增量相匹配；
-- Full ABU 应提供可复用的区分性业务知识，但不得包含单次 Incident 答案或近义泄漏；
-- Incident 只能依据 Baseline 难度、机制覆盖和输入质量纳入或排除，不得根据观察到的 `C − A` 或 `C − B` 结果选择。
+#### 5.2.1 Root-cause depth requirements
 
-具体天花板、地板、分值覆盖和难度阈值必须在 G1.1 数据生成前通过 Decision Record 冻结。
+- 初读 Incident 与 Semantic Layer 时，原则上应存在至少 3 类表面合理、能解释主要症状的竞争机制；最终数量门槛在 G1.1 前冻结；
+- 隐藏根因不得由题面直接陈述、近义改写或被某一条独有线索唯一指认；回答者必须综合至少两类相互独立的 Evidence；
+- 可接受根因必须包含多步机制链，例如“触发或约束变化 → Actor / State / Transition 失效 → 可观察指标或行为变化”，而不是把异常指标换一种说法；
+- 正确排序应依赖对业务机制、约束和观测关系的组合判断；竞争解释应共享部分表面症状，并需要不同的区分性检查；
+- 必须执行单线索审计：任何一个句子、数字或实体都不应单独泄露答案。移除单条非关键线索后，问题不应立刻变得显然，也不应失去全部可判定性；
+- 难度不得来自未披露的实现细节、冷门常识或无从验证的信息。可接受根因粒度必须与现有 Evidence 对齐，并允许机制等价、证据充分的替代解释；
+- Full ABU 应提供跨 Incident 可复用的区分性业务知识，但不得包含本次隐藏答案、近义泄漏或只为命中答案而写入的规则。
+
+#### 5.2.2 Baseline-only pretest
+
+候选 Incident 必须在任何 Full ABU 输出生成前，由多个相互独立的 Baseline-only 运行预试，并至少记录 Top-1 根因命中、RCC@3、HQI、DEE、回答间差异和常见竞争解释。纳入规则必须满足：
+
+- Baseline 不在主要指标或根因命中上形成大面积天花板，也不因信息不足形成大面积地板；
+- 输出不能主要依靠同一关键词或单一显著线索收敛到隐藏根因；
+- Baseline 的回答仍应产生可评分的合理候选和检查，证明题目“困难但可分析”；
+- Incident 只能依据 Baseline 难度、机制覆盖、单线索审计和输入质量纳入或排除，不得根据观察到的 `C − A` 或 `C − B` 结果选择。
+
+Baseline 重复次数、天花板/地板、Top-1 命中、分值覆盖和回答相似度阈值，必须在 G1.1 数据生成前通过 Decision Record 冻结。该门禁用于确保测量有效性，不要求在 Pilot 阶段预先观察到 `C > A` 或 `C > B`。
 
 ### 5.3 Business Reality and acceptable cause set
 
@@ -183,7 +197,7 @@ G1 表明，Incident Evidence 已接近唯一答案时，Baseline 会出现天�
 理想角色为：
 
 1. **Case author:** 创建 Business Reality 和 Incident；
-2. **Condition author:** 创建 BUSINESS、Semantic 和 Domain Notes；
+2. **Condition author:** 创建 BUSINESS、Semantic 和 Basic Domain Notes；
 3. **Run operator:** 执行冻结的运行清单；
 4. **Judges:** 在不知道条件的情况下评分；
 5. **Adjudicator:** 处理隐藏真相之外的合理替代解释和重大分歧。
@@ -217,7 +231,7 @@ G1 表明，Incident Evidence 已接近唯一答案时，Baseline 会出现天�
 | Provider / model / exact version | OpenAI Codex managed runtime；inherited task model，exact build `Not exposed` | TBD | TBD |
 | API or runtime version | `Not exposed`；记录 surface、日期和 canonical task ID | TBD | TBD |
 | System instruction hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | TBD | TBD |
-| Analysis prompt hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | N 主要 Prompt 与 S 消融 Prompt 分别冻结，TBD | 只冻结 N 主要 Prompt，TBD |
+| Analysis prompt hash | [G1 pilot lock](./g1/pilot-lock.md) 封存 | 只冻结 N 主要 Prompt，TBD | 只冻结 N 主要 Prompt，TBD |
 | Temperature / sampling parameters | Platform default；`Not exposed` | TBD | TBD |
 | Maximum output tokens | 托管硬上限 `Not exposed`；可见回答冻结为最多 5 个假设、5 个检查和目标 1,200 词元 | TBD | TBD |
 | Context ordering | 见 [G1 runtime lock](./g1/runtime-lock.md) | TBD | TBD |
@@ -245,23 +259,9 @@ N 使用贴近一般需求方的统一请求，例如：
 
 具体 Incident 现象可以代入首句，但 A-N、B-N、C-N 的任务文本必须完全一致。N 不逐项规定机制、支持、反证、区分性检查或结果更新，也不把 Rubric 改写成任务清单；这些能力由输出自然呈现，并由 Rubric 评分。三个条件使用相同的最大输出 Token。若回答自然产生超过 5 个候选原因或下一步建议，主要评分只读取各自前 5 个，超出部分保留但不作为格式违规。
 
-### 8.2 Structured Prompt Control — G1.1 ablation
-
-S 保留 G1 的详细分析脚手架：
-
-1. 一段当前诊断；
-2. 最多 5 个按优先级排序的假设；
-3. 每个假设的业务机制、支持证据、反证和不确定性；
-4. 最多 5 个按顺序排列的下一步检查；
-5. 每个检查区分哪些候选解释，以及不同结果将如何更新判断；
-6. 可能的 ABU/表示不适配、证据冲突或未知机制；
-7. 当前结论和置信度。
-
-A-S 与 C-S 使用完全相同的结构化任务文本。N 与 S 使用相同的输出 Token 上限和“只评分前 5 个候选原因、前 5 个下一步建议”窗口；S 明示数量上限，N 不把数量或方法展开成任务清单。S 超出明示上限时记录格式违规。S 只支持 G1.1 的替代性诊断，不支持 F1 主要结论。
-
 ## 9. Randomization and Blinding
 
-- 主要实验在每个 `Incident × replicate` 内随机化 A-N、B-N、C-N；G1.1 的 A-S、C-S 使用独立随机化区组，并平衡 N/S 的执行位置；
+- 在每个 `Incident × replicate` 内随机化 A-N、B-N、C-N；
 - 若支持可复现 Seed，则使用预先生成并封存的随机化表；
 - 原始输出先分配不含条件信息的 Answer ID，再进入评分；
 - 评分顺序按评分者独立随机化，避免相邻比较形成锚定；
@@ -359,7 +359,7 @@ F1 在冻结前必须明确评分者组合及其可支持的主张边界。协�
 
 ### 13.3 Specificity gate
 
-仅当主要对比达到推进门槛后，解释 Natural Request 下的 `C-N Full ABU − B-N Domain Notes`：
+仅当主要对比达到推进门槛后，解释 Natural Request 下的 `C-N Full ABU − B-N Basic Domain Notes`：
 
 - 把 RCC@3、HQI、DEE 视为第二个检验族并使用 Holm 校正；
 - HQI 或 DEE 至少一个在校正后达到统计门槛，且点估计达到冻结 MID；
@@ -391,17 +391,6 @@ MID、非劣效界值和功效必须在 F1 数据生成前填入，不允许按�
 
 敏感性分析不改变主要推进规则。
 
-### 13.6 G1.1 structured-prompt ablation
-
-G1.1 单独报告结构化 Prompt 对照：
-
-- Baseline 的脚手架效应：`A-S − A-N`；
-- Natural Request 下的 ABU 增量：`C-N − A-N`；
-- Structured Prompt 下的 ABU 增量：`C-S − A-S`；
-- 替代性诊断：`(C-N − A-N) − (C-S − A-S)`。
-
-这些对比只回答通用结构化系统 Prompt 是否替代或压缩部分 ABU 增量。它们不进入主要假设、Specificity gate、F1 推进规则或“真实需求表达下的效果”结论。
-
 ## 14. Failed Runs, Missingness, and Protocol Deviations
 
 ### 14.1 Failed runs
@@ -430,9 +419,9 @@ G1.1 单独报告结构化 Prompt 对照：
 
 ### 15.1 Internal validity
 
-- A-N、B-N、C-N 的 Prompt、模型、工具权限和输出预算等价；A-S、C-S 只在独立消融区组内比较，不与主要结果合并；
+- A-N、B-N、C-N 的 Prompt、模型、工具权限和输出预算等价，条件之间只改变业务上下文；
 - 隐藏答案不出现在条件输入；
-- Incident 通过 Baseline-only 难度与区分度审计，不因观察到的条件效应被选择；
+- Incident 通过机制深度、竞争解释、单线索泄漏和 Baseline-only 难度审计，不因观察到的条件效应被选择；
 - 运行顺序随机、会话无状态；
 - 评分者在揭盲前完成评分；
 - 评分一致性达到冻结门槛；
@@ -463,7 +452,6 @@ G1.1 单独报告结构化 Prompt 对照：
 | C-N > A-N，但 C-N ≈ B-N | 更多上下文可能有帮助 | ABU 内容或 BUP 结构已被验证 |
 | C-N ≈ A-N | 当前实现、任务或模型未显示增量价值 | ABU 理论必然无效 |
 | C-N 提升 HQI 但伤害 BEI/OWR | 存在效率—安全权衡，需要修订 | 只按平均总分宣布成功 |
-| `C-N − A-N` 大于 `C-S − A-S` | 结构化 Prompt 可能替代或压缩部分 ABU 脚手架价值 | Natural Request 下的 ABU 效应无效，或 S 代表一般需求表达 |
 | T > B 或 H > C（探索性） | 值得设计专门表示实验 | Transition 或 Hybrid View 已被正式证实 |
 | P 下无法识别冲突 | 错误先验风险成立 | 正常 C 条件的正向结果足以忽略该风险 |
 
@@ -512,12 +500,13 @@ benchmark/results/<study-id>/
 
 - [ ] G1 结果已用于修订，但 G1 Incident 已排除；
 - [ ] G1.1 已验证 Case 与 Rubric 的区分度；G1.1 Incident 已排除；
-- [ ] Baseline-only 难度预试规则、天花板/地板阈值和 Incident 纳入规则已冻结；
+- [ ] 根因机制深度、竞争解释数量、单线索审计和 Baseline-only 难度预试规则已冻结；
+- [ ] 天花板/地板、Top-1 命中、分值覆盖、回答相似度阈值和 Incident 纳入规则已冻结；
 - [ ] F1 Incident、隐藏答案、条件和哈希清单冻结；
 - [ ] RCC@3、HQI、DEE 的 MID 已填写；
 - [ ] BEI、OWR 非劣效界值已填写；
 - [ ] 聚类功效分析和最终样本量已填写；
-- [ ] G1.1 的 N 主要 Prompt、S 消融 Prompt、配置和运行窗口已冻结，消融结果已与主要结果隔离；
+- [ ] G1.1 的 N Prompt、A-N/B-N/C-N 三个条件、配置和运行窗口已冻结；
 - [ ] F1 的精确模型版本、N 主要 Prompt、配置和运行窗口已填写；
 - [ ] 评分者、裁决者和角色隔离已确认；
 - [ ] 分析脚本在盲态模拟数据上通过；

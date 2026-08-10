@@ -362,7 +362,7 @@ Semantic Layer / Data
 暂不开展：
 
 - Agent Runtime；
-- 以提升单次模型表现为目的的 Prompt 工程；实验以 Natural Request 为主要条件，只在 G1.1 的 A/C 小样本中把 Structured Prompt 作为替代方案消融；
+- 以提升单次模型表现为目的的 Prompt 工程；G1.1 和 F1 只使用 Natural Request，Prompt 与表示消融如有必要将另行研究；
 - 多 Agent 编排；
 - Business Reasoning Engine；
 - 图数据库实现；
@@ -520,7 +520,7 @@ SEMANTIC.md
 INCIDENT.md
 ```
 
-#### Equal-length Domain Notes Control
+#### Equal-length Basic Domain Notes Control
 
 ```text
 DOMAIN_NOTES.md
@@ -550,10 +550,12 @@ INCIDENT.md
 主要归因同时要求：
 
 - Full ABU 优于 Baseline，说明存在上下文增量；
-- Full ABU 优于等长 Domain Notes，排除“只是更多文本或一般背景”的解释；
+- Full ABU 优于等长 Basic Domain Notes，排除“只是更多文本或一般背景”的解释；
 - BEI、OWR 等护栏没有实质性下降。
 
-G1 已表明题目过易和分析指令过强会压缩条件差异。后续主要实验使用贴近一般需求方表达的 Natural Request，不把 Rubric 改写为任务清单。详细教授机制、反证、区分性 Evidence 和结论更新方法的 Structured Prompt 不代表主要使用场景，只在 G1.1 中运行 A-S、C-S 小规模消融，用于判断通用系统脚手架能否替代部分 ABU 增量；它不进入 F1 主要实验或推进规则。
+G1 已表明题目过易和分析指令过强会压缩条件差异。G1.1 和 F1 只使用贴近一般需求方表达的 Natural Request，不把 Rubric 改写为任务清单，也不混入 Prompt 或表示消融。
+
+候选 Incident 的根因必须具有足够机制深度：题面至少支持多个共享表面症状的合理竞争解释；正确排序需要综合两类以上独立 Evidence，并沿“触发或约束变化 → Actor / State / Transition 失效 → 可观察结果”的多步链条推断。隐藏答案不得被单个句子、数字或近义表达直接泄露。所有候选题先通过单线索审计和多次独立 Baseline-only 预试，排除模型可高概率猜中的天花板题，也排除缺少可判定证据的地板题。
 
 评价维度：
 
@@ -715,7 +717,7 @@ Codex 在执行本项目时必须遵守以下规则。
 5. RFC-0000 至 RFC-0005 风格和术语一致；
 6. 五类业务均能使用 BUP 表达；
 7. 至少完成 15 个模拟 Incident；
-8. 完成 Baseline、等长 Domain Notes 与 Full ABU 的受控对照实验；
+8. 完成 Baseline、等长 Basic Domain Notes 与 Full ABU 的受控对照实验；
 9. 实验结果能够说明显式 ABU 在冻结任务与模型边界内是否产生可归因增量；
 10. 所有未解决问题均被明确记录，而不是被隐含忽略。
 
@@ -748,7 +750,7 @@ Codex 应按以下顺序执行：
 
 ### Step 2
 
-依据 G1 结果设计 G1.1：提高 Incident 歧义与难度，以 A-N、B-N、C-N 作为 Natural Request 主设计，并只在 A/C 小样本中运行 Structured Prompt 替代性消融。
+依据 G1 结果设计 G1.1：只保留 A-N、B-N、C-N 三个 Natural Request 条件；根因包含多步机制链和多个合理竞争解释，且不能被单一题面线索高概率猜中。
 
 ### Step 3
 
@@ -756,11 +758,11 @@ Codex 应按以下顺序执行：
 
 ### Step 4
 
-在不查看 ABU 条件结果的前提下完成 Baseline-only Case 难度预试，冻结 Incident 纳入规则、输入和哈希。
+在不查看 ABU 条件结果的前提下完成根因机制深度、单线索泄漏和 Baseline-only 难度预试，冻结竞争解释数量、天花板/地板、Top-1 命中、分值覆盖、回答相似度、Incident 纳入规则、输入和哈希。
 
 ### Step 5
 
-运行 G1.1，确认 Case、Natural Request 和 Rubric 能形成足够区分度；A-S、C-S 只形成独立的替代性诊断结果。
+运行 G1.1，确认 Case、Natural Request、Basic Domain Notes 对照和 Rubric 能形成足够区分度。
 
 ### Step 6
 
@@ -768,7 +770,7 @@ Codex 应按以下顺序执行：
 
 ### Step 7
 
-运行不包含 G1/G1.1 Incident 的跨行业 F1，检验 Full ABU 相对 Baseline 和等长 Domain Notes 的增量。
+运行不包含 G1/G1.1 Incident 的跨行业 F1，检验 Full ABU 相对 Baseline 和等长 Basic Domain Notes 的增量。
 
 ### Step 8
 
