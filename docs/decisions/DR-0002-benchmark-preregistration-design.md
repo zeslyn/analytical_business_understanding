@@ -2,7 +2,7 @@
 
 **Status:** Proposed
 
-**Prompt policy amendment:** Maintainer-approved on 2026-08-10; the overall preregistration remains Proposed until all F1 freeze items are resolved.
+**G1.1 design amendment:** Maintainer-approved on 2026-08-10; G1.1 is limited to three Natural Request conditions with a stronger root-cause depth gate. The overall preregistration remains Proposed until all F1 freeze items are resolved.
 
 **Date:** 2026-07-20
 
@@ -29,14 +29,16 @@
 三个核心条件为：
 
 1. **A-N — Baseline:** `SEMANTIC.md + INCIDENT.md`；
-2. **B-N — Equal-length Domain Notes:** 控制额外文本和一般领域知识；
+2. **B-N — Equal-length Basic Domain Notes:** 控制额外文本和一般领域知识；
 3. **C-N — Full ABU:** `BUSINESS.md + SEMANTIC.md + INCIDENT.md`。
 
 N 表示 Natural Request：使用一般需求方可能采用的语言提出分析目标、优先判断和下一步建议，不逐项教授评分量表对应的机制、反证、区分性检查和结论更新方法。同一 Incident 在三个条件下使用相同模型、Natural Request、Semantic Layer、工具权限和输出预算。每个 Incident 有多个无状态重复运行，条件顺序随机化，输出匿名后由至少两名不知道条件的评分者独立评分。
 
-### Structured Prompt ablation
+### G1.1 scope
 
-G1.1 另在预先指定、同时进入 N 条件的相同 Incident 子集上，以匹配的重复次数运行 A-S 与 C-S。S 明确提供机制、支持/反证、区分性检查和结果更新脚手架，用于判断通用系统 Prompt 能否替代或压缩 ABU 增量。该消融不运行 B-S，不进入主要效应、Specificity gate、G1.1 区分度门禁或 F1 推进规则。F1 主要实验只使用 A-N、B-N、C-N。
+G1.1 只运行 A-N、B-N、C-N 三个 Natural Request 条件。Structured Prompt、Business Narrative、Transition Skeleton 和其他表示消融不进入 G1.1 或 F1；若未来需要分解增益来自内容、索引还是表达结构，必须作为独立研究重新预注册。
+
+候选 Incident 必须具有多步根因机制链和多个共享表面症状的合理竞争解释；正确排序要求综合至少两类独立 Evidence。隐藏答案不能由题面、近义改写或单个显著线索直接推出。每道题在生成任何 Full ABU 输出前完成单线索审计和多次独立 Baseline-only 预试，并依据预先冻结的 Top-1 命中、天花板/地板、分值覆盖和回答相似度规则纳入。不得根据 `C − A` 或 `C − B` 的方向挑选题目。
 
 ### Metric hierarchy
 
@@ -52,7 +54,7 @@ Business and Evidence Integrity 与 Open-world Resilience 是非劣效护栏。�
 
 - G0 用非 Benchmark 样例校准量表；
 - G1 用 3 个游戏 Incident 做探索性端到端 Pilot；
-- G1.1 用更有区分度的新 Incident 验证 Natural Request 主设计，并独立运行 A-S/C-S 小规模消融；
+- G1.1 只用 A-N/B-N/C-N 验证新 Incident 的根因机制深度、Natural Request、对照公平性和 Rubric 区分度；
 - F1 用未见的跨行业 Incident 做验证性实验；
 - Transition Skeleton、Hybrid View 和 Perturbed ABU 进入独立的 E1 探索模块。
 
@@ -67,7 +69,7 @@ G1 案例不得并入 F1。模型版本、Prompt、MID、护栏界值、功效�
 - 一般领域提醒；
 - 单纯增加上下文长度。
 
-加入 Equal-length Domain Notes 可以控制其中一部分替代解释。主要结果分开报告，可以避免一个主观权重掩盖“找对原因但路径低效”或“路径漂亮但业务错误”的情况。
+加入 Equal-length Basic Domain Notes 可以控制其中一部分替代解释。主要结果分开报告，可以避免一个主观权重掩盖“找对原因但路径低效”或“路径漂亮但业务错误”的情况。
 
 游戏 Pilot 与正式验证分离，可以在不污染验证性样本的情况下发现：
 
@@ -75,9 +77,9 @@ G1 案例不得并入 F1。模型版本、Prompt、MID、护栏界值、功效�
 - 分数是否有天花板或地板效应；
 - 模型随机性与评分者分歧；
 - 条件输入是否泄漏隐藏根因；
-- Domain Notes 是否构成公平对照。
+- Basic Domain Notes 是否构成公平对照。
 
-Natural Request 提高主要估计与一般需求表达的贴近程度，避免把 Rubric 直接改写为任务说明。保留 A-S/C-S 小规模消融，则可以在不扩大主实验的前提下检查 ABU 增益是否能被通用系统脚手架替代。
+Natural Request 提高主要估计与一般需求表达的贴近程度，避免把 Rubric 直接改写为任务说明。只保留三个条件可直接聚焦 ABU 相对 Semantic Layer 和 Basic Domain Notes 的增量，降低样本、多重比较和解释负担。根因机制深度与单线索审计进一步避免模型依靠题面模式匹配形成天花板，但仍要求 Evidence 足以支持可评分的竞争解释，避免把“难”误做成“无从判断”。
 
 ## Alternatives
 
@@ -99,16 +101,16 @@ Natural Request 提高主要估计与一般需求表达的贴近程度，避免�
 
 ### E. 完整交叉 A/B/C × Natural/Structured Prompt
 
-可以更完整地估计 Prompt 与上下文交互，但会把主实验扩展为需求方不常采用的详细方法指令，并显著增加样本与多重比较成本。当前问题只需要 A-N/B-N/C-N 估计 ABU 增量，以及 A-S/C-S 检查替代性，因此否决完整交叉。
+可以更完整地估计 Prompt 与上下文交互，但会把实验扩展为需求方不常采用的详细方法指令，并显著增加样本与多重比较成本。当前问题只需要 A-N/B-N/C-N 估计 ABU 增量，因此在 G1.1 和 F1 中否决；若未来研究 Prompt 替代性，应独立预注册。
 
 ## Tradeoffs
 
 - 需要独立案例作者、运行者、评分者和裁决者，治理成本上升；
 - 使用同一基础模型的多个独立 Agent 可以降低早期人力门槛，但不能提供评分者模型多样性或人类专家有效性证据；
 - Pilot 不能贡献正式效应，增加总运行量；
-- Equal-length Domain Notes 只能控制“更多文本”的一部分影响，不能完全分离知识内容与表示结构；
+- Equal-length Basic Domain Notes 只能控制“更多文本”的一部分影响，不能完全分离知识内容与表示结构；
 - 以 Incident 为推断单位时，增加重复运行不能替代增加独立 Incident；
-- Structured Prompt 消融只在 G1.1 小样本中运行，因此只能支持设计诊断，不能提供跨行业替代性结论；
+- G1.1 不分解 Prompt、知识内容、索引和表示结构的独立贡献，这些主张需要未来的独立实验；
 - 评分一致性门槛可能暴露构念尚未操作化，并延迟正式实验。
 
 ## Evidence and Falsification
@@ -121,7 +123,8 @@ Natural Request 提高主要估计与一般需求表达的贴近程度，避免�
 
 以下结果会否证或削弱本决定：
 
-- Domain Notes 无法在不知道隐藏答案的情况下构造为公平对照；
+- Basic Domain Notes 无法在不知道隐藏答案的情况下构造为公平对照；
+- 无法构造既有多步机制和合理竞争解释、又能被现有 Evidence 判定的 Incident；
 - 主要维度在多轮校准后仍无法达到评分一致性门槛；
 - Incident 数量无法为声明的 MID 提供合理功效；
 - 盲法在输出中系统性失效，导致评分者能够可靠识别条件；
@@ -146,10 +149,11 @@ Natural Request 提高主要估计与一般需求表达的贴近程度，避免�
 
 - 为 RCC@3、HQI 和 DEE 冻结 MID；
 - 为 BEI 和 OWR 冻结非劣效界值；
-- 确定主要模型、精确版本、Natural Request、G1.1 Structured Prompt 消融和输出预算；
+- 确定主要模型、精确版本、Natural Request、三个实验条件和输出预算；
+- 冻结根因机制深度、竞争解释数量、单线索审计、Baseline-only 重复次数和难度阈值；
 - 用 Pilot 方差完成聚类功效分析；
 - 已创建 12 个评分校准回答并完成首轮独立 AI 评分、一致性统计、必要裁决和锚点讨论；G0 量表门禁可支持探索性 G1，F1 仍需完整冻结 Judge 配置；
-- 证明 Equal-length Domain Notes 的 Token、信息量和写作质量控制可审计；
+- 证明 Equal-length Basic Domain Notes 的 Token、信息量和写作质量控制可审计；
 - 指定角色和数据访问隔离方式。
 
 ## Follow-up
